@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.column(db.Date, nullable=False, server_default=func.current_date())
     birthday = db.column(db.Date, nullable=False)
-    score = db.column(db.Integer, deafult=0,nullable=False)
+    score = db.column(db.Integer, default=0,nullable=False)
 
     @property
     def password(self):
