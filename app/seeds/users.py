@@ -5,13 +5,13 @@ from datetime import datetime
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@email.com', password='password',birthday=datetime.date(1990, 1, 1))
+        username='Demo', email='demo@email.com', password='password',birthday='1999-01-01')
     user1 = User(
-        username='abel704', email='abel@email.com', password='password',birthday=datetime.date(1991, 10, 27))
+        username='abel704', email='abel@email.com', password='password',birthday='1999-01-01')
     user2 = User(
-        username='labbit', email='labbit@email.com', password='password',birthday=datetime.date(1990, 1, 1))
+        username='labbit', email='labbit@email.com', password='password',birthday='1999-01-01')
     user3 = User(
-        username='nyll', email='nyll@email.com', password='password',birthday=datetime.date(1990, 1, 1))
+        username='nyll', email='nyll@email.com', password='password',birthday='1999-01-01')
 
     db.session.add(demo)
     db.session.add(user1)
