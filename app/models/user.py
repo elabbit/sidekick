@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.column(db.Date, nullable=False, server_default=func.now())
+    created_at = db.column(db.Date, nullable=False, server_default=func.current_date())
     birthday = db.column(db.Date, nullable=False)
     score = db.column(db.Integer, nullable=False)
 
