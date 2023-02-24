@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     birthday = db.Column(db.Date, nullable=False)
     score = db.Column(db.Integer, default=0)
 
+    user_habits = db.relationship('Habit', back_populates='habit_owner')
+
     @property
     def password(self):
         return self.hashed_password
