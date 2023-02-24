@@ -11,3 +11,4 @@ class Habit(db.Model):
     daily = db.Column(db.Boolean, nullable=False)
 
     habit_owner = db.relationship('User', back_populates='user_habits')
+    habit_tracked_instances = db.relationship('Habit', back_populates='habit')
