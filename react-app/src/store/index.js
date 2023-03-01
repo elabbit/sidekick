@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import habitsReducer from './habits';
 import habitTracksReducer from './habitTracks';
 import session from './session'
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
