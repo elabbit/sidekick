@@ -1,4 +1,6 @@
 from .db import db
+from datetime import date
+
 
 
 class Habit(db.Model):
@@ -9,6 +11,7 @@ class Habit(db.Model):
     name = db.Column(db.String(500), nullable=False)
     frequency = db.Column(db.Integer, nullable=False)
     daily = db.Column(db.Boolean, nullable=False)
+    start_date = db.Column(db.Date, default=date.today, nullable=False)
 
     habit_owner = db.relationship('User', back_populates='user_habits')
     habit_tracked_instances = db.relationship('HabitTrack', back_populates='habit')
