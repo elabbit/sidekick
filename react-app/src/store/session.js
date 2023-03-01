@@ -99,6 +99,31 @@ export const signUp = (username, email, password, repeatPassword, birthday) => a
   }
 }
 
+export const editUser = (id, username, email) => async (dispatch) => {
+  const response = await fetch(`/api/auth/edit/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id, username, email
+    })
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data))
+    return 'success';
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
