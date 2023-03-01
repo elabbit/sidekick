@@ -36,3 +36,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'birthday': self.birthday
         }
+
+    # def habits_to_dict(self):
+    #     return [habit.to_dict() for habit in self.user_habits]

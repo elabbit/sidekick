@@ -17,3 +17,7 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+    # return {
+    #     **user.to_dict(),     #'**' unpacks dictionary user.to_dict() into keyword args
+    #     'user_habits': user.habits_to_dict()
+    # }
