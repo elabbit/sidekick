@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Modal } from '../../context/Modal';
 
 const UserEditForm = () => {
     const [username, setUsername] = useState();
