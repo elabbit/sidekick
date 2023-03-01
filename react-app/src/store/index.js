@@ -1,15 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import habitsReducer from './habits';
-import habitTracksReducer from './habitTracks';
 import session from './session'
-import user from './user'
 
 const rootReducer = combineReducers({
   session,
-  user,
   habits: habitsReducer,
-  habitTracks: habitTracksReducer
 });
 
 
