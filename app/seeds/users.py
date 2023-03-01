@@ -12,11 +12,17 @@ def seed_users():
         username='labbit', email='labbit@email.com', password='password',birthday='1999-01-01')
     user3 = User(
         username='nyll', email='nyll@email.com', password='password',birthday='1999-01-01')
+    user4 = User(
+        username='jkim', email='jkim@email.com', password='password',birthday='1999-01-01')
+    user5 = User(
+        username='dchung', email='dchung@email.com', password='password',birthday='1999-01-01')
 
     db.session.add(demo)
     db.session.add(user1)
     db.session.add(user2)
     db.session.add(user3)
+    db.session.add(user4)
+    db.session.add(user5)
 
     db.session.commit()
 
