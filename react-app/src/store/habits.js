@@ -74,12 +74,13 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   })
   if (response.ok) {
     dispatch(actionDeleteHabit(habitId))
+    return habitId;
   }
 }
 
 
 const habitsReducer = (state = {}, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case LOAD_HABITS:
       const newState1 = {};
       action.habits.habits.forEach(habit => {
@@ -88,7 +89,7 @@ const habitsReducer = (state = {}, action) => {
       return newState1;
 
     case ADD_HABIT:
-      const newState2 = {...state};
+      const newState2 = { ...state };
       newState2[action.habit.id] = action.habit
       return newState2;
 
@@ -98,7 +99,7 @@ const habitsReducer = (state = {}, action) => {
       return newState3;
 
     case DELETE_HABIT:
-      const newState4 = {...state};
+      const newState4 = { ...state };
       delete newState4[action.habitId]
       return newState4;
 
@@ -106,3 +107,5 @@ const habitsReducer = (state = {}, action) => {
       return state;
   }
 }
+
+export default habitsReducer;
