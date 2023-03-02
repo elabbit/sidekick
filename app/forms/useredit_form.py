@@ -24,5 +24,5 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 class UserEditForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), Email, user_exists])
+    email = StringField('email', validators=[DataRequired(), Email(), user_exists])
     username = StringField('username', validators=[DataRequired(), username_exists])
