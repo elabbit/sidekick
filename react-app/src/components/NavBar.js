@@ -29,9 +29,6 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <UserEditForm />
-        </li>
-        <li>
           <LogoutButton />
         </li>
       </ul>
