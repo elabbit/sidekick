@@ -17,11 +17,3 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
-
-
-@user_routes.route('/icons/<int:id>')
-@login_required
-def icons(id):
-    icons = Icon.query.filter_by(user_id=id).all()
-    return {'icons': [icon.icon for icon in icons]}
-    # return {'icons': "hello"}

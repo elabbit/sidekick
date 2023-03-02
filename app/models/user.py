@@ -38,5 +38,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'birthday': self.birthday,
             'score': self.score,
-            'default_icon': self.default_icon
+            'default_icon': self.default_icon,
+            'user_icons': [icon.icon for icon in self.user_icons]
         }

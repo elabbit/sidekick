@@ -124,6 +124,22 @@ export const editUser = (id, username, email) => async (dispatch) => {
   }
 }
 
+export const updateIcon = (icon) => async (dispatch) => {
+  console.log(icon)
+  const response = await fetch(`/api/auth/icon/${icon}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data))
+    return 'success';
+  }
+}
+
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

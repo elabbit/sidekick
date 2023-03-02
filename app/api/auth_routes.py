@@ -98,3 +98,12 @@ def edit_user(id):
 
         return editedUser.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@auth_routes.route('/icon/<int:id>', methods=['PUT'])
+def update_icon(id):
+    editedUser = User.query.get(current_user.id)
+
+    editedUser.default_icon = id
+    db.session.commit()
+
+    return editedUser.to_dict()
