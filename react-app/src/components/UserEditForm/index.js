@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { editUser } from "../../store/session";
 import { Modal } from '../../context/Modal';
 
@@ -12,15 +11,17 @@ const UserEditForm = () => {
     const [showModal, setShowModal] = useState(false);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
-    const history = useHistory();
 
 
     const onSubmit = async (e) => {
         e.preventDefault();
         const errorsArray = [];
         const data = await dispatch(editUser(id, username, email));
-        if (data === "success") history.push(`/`)
-        if (data) {
+        if (data === "success") {
+            setErrors([])
+            setShowModal(false)
+        }
+        else if (data) {
             setErrors(data)
             if (data) {
                 errorsArray.push(...data)
@@ -35,6 +36,9 @@ const UserEditForm = () => {
     const handleCancel = (e) => {
         e.preventDefault();
         setShowModal(false);
+        setUsername(user.username)
+        setEmail(user.email)
+        setErrors([])
     }
 
     return (
@@ -42,6 +46,11 @@ const UserEditForm = () => {
             <button onClick={() => setShowModal(true)}>Edit User</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
+                    {errors && (
+                        <div>
+                            {errors}
+                        </div>
+                    )}
                     <form onSubmit={onSubmit}>
                         <div>
                             <label htmlFor="email">Email</label>
