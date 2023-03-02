@@ -6,17 +6,7 @@ import { updateIcon } from '../../store/session.js'
 
 function IconSelect({user}) {
     const [showModal, setShowModal] = useState(false);
-    // const [icon, setIcon] = useState(user.defaullt_icon)
     const dispatch = useDispatch();
-
-    // useEffect(()=>{
-    //     (async () => {
-    //         const data = await dispatch(updateIcon(icon));
-    //         if (data === "success") {
-    //             setShowModal(false)
-    //         }
-    //     })()
-    // },[icon])
 
     const update = async (ico) =>{
             const data = await dispatch(updateIcon(ico));
