@@ -53,19 +53,24 @@ export const getUserHabits = (userId) => async (dispatch) => {
 }
 
 export const addHabit = (payload) => async (dispatch) => {
+  console.log("PAYLOAD", payload)
   const response = await fetch('/api/habits/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
 
+
+
   if (response.ok) {
     const habit = await response.json();
+    console.log(habit)
     dispatch(actionAddHabit(habit))
-    return null
+    return habit
   }
   else {
     const error = await response.json();
+    console.log("ERROR",error)
     return error
   }
 }

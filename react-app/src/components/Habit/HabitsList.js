@@ -26,9 +26,9 @@ const AllHabits = (/* {date} */) => {
 
                     //if conditional here to display only habits w/ start dates before current date
                     return (
-                        <div>
+                        <div key={habit.id}> {/* on click opens edit habit modal */}
                             <div>{habit.name}</div>
-                            <div>{habit.frequency} times a week</div>
+                            <div>{habit.frequency}x a week</div>
                         </div>
                     )
                 })}
@@ -44,7 +44,7 @@ const AllHabits = (/* {date} */) => {
                         <div>
 
                             <div>{habit.name}</div>
-                            <div>{habit.frequency} times a day</div>
+                            <div>{habit.frequency}x a day</div>
                         </div>
                     )
                 })}
