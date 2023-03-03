@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import UserCard from './components/UserCard';
 import AllHabits from './components/Habit/HabitsList';
+import AddHabit from './components/Habit/CreateHabitModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,6 +45,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+          <AddHabit/>
           <AllHabits/>
           <UserCard />
         </ProtectedRoute>

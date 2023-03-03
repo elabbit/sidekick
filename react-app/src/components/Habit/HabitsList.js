@@ -10,7 +10,6 @@ const AllHabits = (/* {date} */) => {
     const dailyHabits = habitsList && habitsList.filter(habit => (habit.daily === true))
     const weeklyHabits = habitsList && habitsList.filter(habit => (habit.daily !== true))
 
-    console.log("HABIT FROM COMPONENT",habitsList)
     useEffect(() => {
         const loadHabits = async () => {
             await dispatch(getUserHabits(sessionUser.id))

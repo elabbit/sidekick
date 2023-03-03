@@ -28,8 +28,8 @@ def create_habit():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         habit = Habit(
-            user_id=form.date['user_id'],
-            name=form.date['name'],
+            user_id=form.data['user_id'],
+            name=form.data['name'],
             frequency=form.data['frequency'],
             daily=form.data['daily'],
             start_date=form.data['start_date']

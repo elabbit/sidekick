@@ -4,7 +4,6 @@ const EDIT_HABIT = 'habits/EDIT_HABIT';
 const DELETE_HABIT = 'habits/DELETE_HABIT';
 const LOAD_HABIT_TRACKS = 'habit_tracks/LOAD_HABIT_TRACKS';
 const ADD_HABIT_TRACK = 'habit_tracks/ADD_HABIT_TRACK';
-const EDIT_HABIT_TRACK = 'habit_tracks/EDIT_HABIT_TRACK';
 const DELETE_HABIT_TRACK = 'habit_tracks/DELETE_HABIT_TRACK';
 
 const actionLoadHabits = (habits) => ({
@@ -37,11 +36,6 @@ const actionAddHabitTrack = (habitTrack) => ({
   habitTrack
 });
 
-const actionEditHabitTrack = (editedHabitTrack) => ({
-  type: EDIT_HABIT_TRACK,
-  editedHabitTrack
-});
-
 const actionDeleteHabitTrack = (habitTrackId) => ({
   type: DELETE_HABIT_TRACK,
   habitTrackId
@@ -53,23 +47,22 @@ export const getUserHabits = (userId) => async (dispatch) => {
 
   if (response.ok) {
     const habits = await response.json();
-    console.log("HABIT FROM REDUCER", habits)
-
     dispatch(actionLoadHabits(habits));
     return habits;
   }
 }
 
-export const addHabit = (formData) => async (dispatch) => {
-  const response = await fetch('/api/habits/new', {
+export const addHabit = (payload) => async (dispatch) => {
+  const response = await fetch('/api/habits/', {
     method: 'POST',
-    body: formData
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
   })
 
   if (response.ok) {
     const habit = await response.json();
     dispatch(actionAddHabit(habit))
-    return habit
+    return null
   }
   else {
     const error = await response.json();
