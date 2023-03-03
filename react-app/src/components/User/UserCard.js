@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux'
-import ICONS from "../../icons/index.js"
-import IconSelect from '../IconSelect/index.js';
+import IconSelect from './IconSelect.js';
+import UserEditForm from './UserEditForm.js';
 
 function UserCard() {
     const user = useSelector(state => state.session.user)
 
     return (
         <>
-            <img src={ICONS[user.default_icon]} alt=''/>
+            <IconSelect  user={user}/>
             <div>{user.username}</div>
+            <UserEditForm/>
             <div>score: {user.score}</div>
-            <IconSelect/>
         </>
 
     )
