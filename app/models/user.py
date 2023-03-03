@@ -15,8 +15,10 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.Date, default=date.today, nullable=False)
     birthday = db.Column(db.Date, nullable=False)
     score = db.Column(db.Integer, default=0)
+    default_icon = db.Column(db.Integer, nullable=False)
 
     user_habits = db.relationship('Habit', back_populates='habit_owner')
+    user_icons = db.relationship('Icon', back_populates='icon_owner')
 
     @property
     def password(self):
@@ -34,7 +36,9 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'birthday': self.birthday
+            'birthday': self.birthday,
+            'score': self.score,
+            'default_icon': self.default_icon
         }
 
 
