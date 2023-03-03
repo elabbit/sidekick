@@ -18,14 +18,12 @@ const AddHabit = () => {
 
         const currentDate = new Date();
         const formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
-        const isDaily = daily === 'daily'? "true": "false"
-        console.log("DAILY", daily, isDaily)
 
         const payload = {
             user_id: sessionUser.id,
             name: name,
             frequency: frequency,
-            daily: isDaily,
+            daily: daily,
             start_date: formattedDate
         }
 

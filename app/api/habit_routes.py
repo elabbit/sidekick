@@ -33,7 +33,7 @@ def create_habit():
             user_id=form.data['user_id'],
             name=form.data['name'],
             frequency=form.data['frequency'],
-            daily=form.data['daily'],
+            daily= form.data['daily'] == 'daily',
             start_date=form.data['start_date']
         )
         db.session.add(habit)
