@@ -25,8 +25,6 @@ def habits(userId):
 @habit_routes.route('/', methods=['POST'])
 def create_habit():
     form = HabitForm()
-    print("-------------------------------------------------")
-    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         habit = Habit(

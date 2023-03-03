@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
-import IconSelect from './IconSelect.js';
-import UserEditForm from './UserEditForm.js';
+import IconSelect from './IconSelectModal.js';
+import UserEditForm from './UserEditModal.js';
 
 function UserCard() {
     const user = useSelector(state => state.session.user)
