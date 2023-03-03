@@ -41,3 +41,5 @@ class User(db.Model, UserMixin):
             'default_icon': self.default_icon,
             'user_icons': [icon.icon for icon in self.user_icons]
         }
+
+

@@ -4,6 +4,7 @@ import { authenticate } from './store/session';
 import HomePage from './components/Navigation/HomePage';
 import SplashPage from './components/Navigation/SplashPage';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -25,7 +26,6 @@ function App() {
         <HomePage />
         :
         <SplashPage/>
-
   );
 }
 
