@@ -15,3 +15,13 @@ class Habit(db.Model):
 
     habit_owner = db.relationship('User', back_populates='user_habits')
     habit_tracked_instances = db.relationship('HabitTrack', back_populates='habit')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'name': self.name,
+            'frequency': self.frequency,
+            'daily': self.daily,
+            'start_date': self.start_date
+        }

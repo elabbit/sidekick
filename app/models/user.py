@@ -40,3 +40,5 @@ class User(db.Model, UserMixin):
             'score': self.score,
             'default_icon': self.default_icon
         }
+
+
