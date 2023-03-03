@@ -5,8 +5,7 @@ from flask_login import login_required
 habit_routes = Blueprint('habits', __name__)
 
 
-@habit_routes('/')
-@login_required
+@habit_routes.route('/<int:userId>')
 def habits(userId):
     habits = Habit.query.filter_by(user_id=userId).all()
     return {'habits': [habit.to_dict() for habit in habits]}

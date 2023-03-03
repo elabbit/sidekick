@@ -48,11 +48,13 @@ const actionDeleteHabitTrack = (habitTrackId) => ({
 });
 
 
-export const getUserHabits = (username) => async (dispatch) => {
-  const response = await fetch(`/api/habits/${username}`)
+export const getUserHabits = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/habits/${userId}`)
 
   if (response.ok) {
     const habits = await response.json();
+    console.log("HABIT FROM REDUCER", habits)
+
     dispatch(actionLoadHabits(habits));
     return habits;
   }
