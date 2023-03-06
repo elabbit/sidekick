@@ -52,3 +52,11 @@ def edit_habit(habitId):
 
         return edited_habit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@habit_routes.route('/<int:habitId>/delete', methods=['DELETE'])
+def delete_habit(habitId):
+    deleted_habit = Habit.query.get(habitId)
+    db.session.delete(deleted_habit)
+    db.session.commit()
+
+    return f'{habitId}'

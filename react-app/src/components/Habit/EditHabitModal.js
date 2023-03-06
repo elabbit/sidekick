@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { editHabit } from "../../store/habits";
+import DeleteHabit from "./DeleteHabitModal";
 
 const EditHabit = ({habit}) => {
     const [showModal, setShowModal] = useState(false);
@@ -39,6 +40,7 @@ const EditHabit = ({habit}) => {
                             onChange={(e) => setFrequency(e.target.value)} />
                         <button type="submit">Save</button>
                         <button type='button' onClick={handleCancel}>Cancel</button>
+                        <DeleteHabit habit={habit}/>
                     </form>
                 </Modal>
             )}

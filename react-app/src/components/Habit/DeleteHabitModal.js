@@ -7,7 +7,7 @@ const DeleteHabit = ({habit}) => {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
 
-    const deleteHabit = async(habitId) => {
+    const deleteSpecificHabit = async(habitId) => {
         await dispatch(deleteHabit(habitId))
     }
 
@@ -24,7 +24,7 @@ const DeleteHabit = ({habit}) => {
                             <div>{`Are you sure you want to remove this Habit?`}</div>
                         </div>
                         <div>
-                            <button onClick={() => deleteHabit(habit.id)}>Delete</button>
+                            <button onClick={() => deleteSpecificHabit(habit.id)}>Delete</button>
                         </div>
                         <div>
                             <button onClick={() => setShowModal(false)}>Cancel</button>
