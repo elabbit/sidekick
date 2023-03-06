@@ -30,7 +30,7 @@ const AllHabits = (/* {date} */) => {
                         <div key={habit.id}> {/* on click opens edit habit modal */}
                             <div>{habit.name}</div>
                             <div>{habit.frequency}x a week</div>
-                            <EditHabit freq={habit.frequency} habitId={habit.id}/>
+                            <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
                 })}
@@ -47,7 +47,7 @@ const AllHabits = (/* {date} */) => {
 
                             <div>{habit.name}</div>
                             <div>{habit.frequency}x a day</div>
-                            <EditHabit freq={habit.frequency} habitId={habit.id}/>
+                            <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
                 })}
