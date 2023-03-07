@@ -75,21 +75,22 @@ export const addHabit = (payload) => async (dispatch) => {
   }
 }
 
-export const editHabit = (habitId, habitInfo) => async (dispatch) => {
+export const editHabit = (habitId, frequency) => async (dispatch) => {
   const response = await fetch(`/api/habits/${habitId}/edit`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      // habit info
-    })
+    body: JSON.stringify({frequency})
   })
 
   if (response.ok) {
     const editedHabit = await response.json();
     dispatch(actionEditHabit(editedHabit));
     return editedHabit;
+  } else {
+    const data = await response.json();
+    console.log(data.errors)
   }
 }
 

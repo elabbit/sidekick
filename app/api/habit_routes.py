@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.models import Habit, db
 from flask_login import login_required
 from app.forms.habit_form import HabitForm
+from app.forms import HabitEditForm
 
 habit_routes = Blueprint('habits', __name__)
 
@@ -38,3 +39,24 @@ def create_habit():
         db.session.commit()
         return habit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@habit_routes.route('/<int:habitId>/edit', methods=['PUT'])
+def edit_habit(habitId):
+    form = HabitEditForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        edited_habit = Habit.query.get(habitId)
+
+        edited_habit.frequency=form.data['frequency']
+        db.session.commit()
+
+        return edited_habit.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@habit_routes.route('/<int:habitId>/delete', methods=['DELETE'])
+def delete_habit(habitId):
+    deleted_habit = Habit.query.get(habitId)
+    db.session.delete(deleted_habit)
+    db.session.commit()
+
+    return f'{habitId}'
