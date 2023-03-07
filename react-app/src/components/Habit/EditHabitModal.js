@@ -40,8 +40,8 @@ const EditHabit = ({habit}) => {
                             onChange={(e) => setFrequency(e.target.value)} />
                         <button type="submit">Save</button>
                         <button type='button' onClick={handleCancel}>Cancel</button>
-                        <DeleteHabit habit={habit}/>
                     </form>
+                    <DeleteHabit habit={habit}/>
                 </Modal>
             )}
         </div>

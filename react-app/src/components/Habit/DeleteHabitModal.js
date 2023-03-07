@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import { deleteHabit } from "../../store/habits";
 
 const DeleteHabit = ({habit}) => {
-    const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setDeleteShowModal] = useState(false);
     const dispatch = useDispatch();
 
     const deleteSpecificHabit = async(habitId) => {
@@ -13,9 +13,9 @@ const DeleteHabit = ({habit}) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Delete</button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+            <button onClick={() => setDeleteShowModal(true)}>Delete</button>
+            {showDeleteModal && (
+                <Modal onClose={() => setDeleteShowModal(false)}>
                     <div>
                         <div>
                             <h2>Delete Confirmation</h2>
@@ -27,7 +27,7 @@ const DeleteHabit = ({habit}) => {
                             <button onClick={() => deleteSpecificHabit(habit.id)}>Delete</button>
                         </div>
                         <div>
-                            <button onClick={() => setShowModal(false)}>Cancel</button>
+                            <button onClick={() => setDeleteShowModal(false)}>Cancel</button>
                         </div>
                     </div>
                 </Modal>
