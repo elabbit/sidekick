@@ -1,4 +1,4 @@
-import LogoutButton from "../auth/LogoutButton";
+import LogoutButton from "../Auth/LogoutButton";
 import UserCard from "../User/UserCard";
 
 const SideBar = () =>{

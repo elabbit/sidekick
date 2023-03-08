@@ -1,0 +1,25 @@
+
+.weekdays{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.week-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.month-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.day-today{
+    border:solid red 1px;
+}
+
+.day-current {
+    color:red;
+}
