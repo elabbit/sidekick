@@ -1,9 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import DayPicker from "./DayPicker";
 import dayjs from "dayjs";
 import CalendarContext from "../../context/CalendarContext";
-import { getMonth } from "../../util";
-
 
 const Weekly = ({ month }) => {
     const { currentDay} = useContext(CalendarContext)

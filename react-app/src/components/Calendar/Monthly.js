@@ -7,11 +7,16 @@ import DayPicker from "./DayPicker";
 
 const Monthly = ({ month, setCurrentMonth }) => {
     const [showModal, setShowModal] = useState(false);
-    const { monthIndex, setMonthIndex, setCurrentDay } = useContext(CalendarContext)
+    const { monthIndex, setMonthIndex, currentDay, setCurrentDay } = useContext(CalendarContext)
 
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex))
-    }, [monthIndex])
+    }, [monthIndex, setCurrentMonth])
+
+    useEffect(()=>{
+        setCurrentMonth(getMonth(currentDay.month()))
+        setMonthIndex(currentDay.month())
+    }, [showModal, currentDay, setCurrentMonth, setMonthIndex])
 
     function handleToday() {
         setMonthIndex(dayjs().month());

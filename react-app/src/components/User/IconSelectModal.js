@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import ICONS from "../../icons/index.js"
 import { Modal } from '../../context/Modal.js'
