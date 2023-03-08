@@ -7,16 +7,11 @@ import DayPicker from "./DayPicker";
 
 const Monthly = ({ month, setCurrentMonth }) => {
     const [showModal, setShowModal] = useState(false);
-    const { monthIndex, setMonthIndex, currentDay, setCurrentDay } = useContext(CalendarContext)
+    const { monthIndex, setMonthIndex, setCurrentDay } = useContext(CalendarContext)
 
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex))
     }, [monthIndex, setCurrentMonth])
-
-    useEffect(()=>{
-        setCurrentMonth(getMonth(currentDay.month()))
-        setMonthIndex(currentDay.month())
-    }, [showModal, currentDay, setCurrentMonth, setMonthIndex])
 
     function handleToday() {
         setMonthIndex(dayjs().month());
@@ -57,7 +52,7 @@ const Monthly = ({ month, setCurrentMonth }) => {
                                 <React.Fragment key={i}>
                                     {
                                         row.map((day, index) => (
-                                            <DayPicker key={day.format("MMDD")} day={day} />
+                                            <DayPicker key={day.format("MMDD")} day={day} setShowModal={setShowModal}/>
                                         ))
                                     }
                                 </React.Fragment>
