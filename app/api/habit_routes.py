@@ -60,3 +60,16 @@ def delete_habit(habitId):
     db.session.commit()
 
     return f'{habitId}'
+
+@habit_routes.route('/<int:habitId>/tracks')
+def habit_tracks(habitId):
+    pass
+
+
+@habit_routes.route('/<int:habitId>/tracks', methods=['POST'])
+def add_track(habitId):
+    pass
+
+@habit_routes.route('/tracks/<int:trackId>', methods=['DELETE'])
+def delete_track(trackId):
+    pass

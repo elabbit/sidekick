@@ -26,14 +26,14 @@ const actionDeleteHabit = (habitId) => ({
   habitId
 });
 
-const actionLoadHabitTracks = (habitTracks) => ({
+const actionLoadHabitTracks = (payload) => ({
   type: LOAD_HABIT_TRACKS,
-  habitTracks
+  payload
 });
 
-const actionAddHabitTrack = (habitTrack) => ({
+const actionAddHabitTrack = (habitId) => ({
   type: ADD_HABIT_TRACK,
-  habitTrack
+  habitId
 });
 
 const actionDeleteHabitTrack = (habitTrackId) => ({
@@ -59,8 +59,6 @@ export const addHabit = (payload) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
-
-
 
   if (response.ok) {
     const habit = await response.json();
@@ -104,6 +102,27 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   }
 }
 
+export const addHabitTrack = (habitId) => async (dispatch) => {
+  const response = await fetch(`/api/habits/${habitId}/tracks`, {
+    method: 'POST'
+  })
+
+  if (response.ok) {
+    dispatch(actionAddHabitTrack(habitId))
+    return habitId
+  }
+}
+
+export const deleteHabitTrack = (habitTrackId) => async (dispatch) => {
+  const response = await fetch(`/api/habits/tracks/${habitTrackId}`, {
+    method: 'DELETE'
+  })
+
+  if (response.ok) {
+    dispatch(actionDeleteHabitTrack(habitTrackId))
+    return habitTrackId
+  }
+}
 
 const habitsReducer = (state = {}, action) => {
   switch (action.type) {
