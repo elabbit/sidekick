@@ -9,3 +9,9 @@ class HabitTrack(db.Model):
     date = db.Column(db.Date, nullable=False)
 
     habit = db.relationship('Habit', back_populates='habit_tracked_instances')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'date': self.date
+        }

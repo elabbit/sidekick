@@ -61,9 +61,9 @@ def delete_habit(habitId):
 
     return f'{habitId}'
 
-@habit_routes.route('/<int:habitId>/tracks')
-def habit_tracks(habitId):
-    pass
+# @habit_routes.route('/<int:habitId>/tracks')
+# def habit_tracks(habitId):
+#     pass
 
 
 @habit_routes.route('/<int:habitId>/tracks', methods=['POST'])

@@ -26,10 +26,6 @@ const actionDeleteHabit = (habitId) => ({
   habitId
 });
 
-const actionLoadHabitTracks = (payload) => ({
-  type: LOAD_HABIT_TRACKS,
-  payload
-});
 
 const actionAddHabitTrack = (habitId) => ({
   type: ADD_HABIT_TRACK,
