@@ -10,12 +10,22 @@ const generatePokemon = () => {
 const canEvolve = (pokeNum) => {
     return basePokeWSec.includes(pokeNum)
 }
-const evolvePoke = (pokeNum) => {
-    let idxOfBase = basePokeWSec.indexOf(pokeNum)
+// const evolvePoke = (pokeNum) => {
+//     let idxOfBase = basePokeWSec.indexOf(pokeNum)
 
-    if(idxOfBase === -1){
-        let newIdxOfBase = basePokeWAllEvol.indexOf(pokeNum)
-        return basePokeWAllEvol[newIdxOfBase + 1]
+//     if(idxOfBase === -1){
+//         let newIdxOfBase = basePokeWAllEvol.indexOf(pokeNum)
+//         return basePokeWAllEvol[newIdxOfBase + 1]
+//     }
+//     return basePokeWSec[idxOfBase + 1]
+// }
+
+const evolvePoke = (pokeArr) => {
+    let res = []
+    for(let i = 0; i <pokeArr.length; i++){
+        if(canEvolve(pokeArr[i]) && !pokeArr.includes(pokeArr[i])){
+            res.push(pokeArr[i] + 1)
+        }
     }
-    return basePokeWSec[idxOfBase + 1]
+    return res
 }
