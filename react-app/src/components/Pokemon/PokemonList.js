@@ -27,5 +27,5 @@ const evolvePoke = (pokeArr) => {
             res.push(pokeArr[i] + 1)
         }
     }
-    return res
+    return res[Math.random() * res.length]
 }
