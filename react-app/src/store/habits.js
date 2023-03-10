@@ -27,9 +27,9 @@ const actionDeleteHabit = (habitId) => ({
 });
 
 
-const actionAddHabitTrack = (habitId) => ({
+const actionAddHabitTrack = (habitTrack) => ({
   type: ADD_HABIT_TRACK,
-  habitId
+  habitTrack
 });
 
 const actionDeleteHabitTrack = (habitTrackId) => ({
@@ -98,14 +98,23 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   }
 }
 
-export const addHabitTrack = (habitId) => async (dispatch) => {
+export const addHabitTrack = (habitId, date) => async (dispatch) => {
   const response = await fetch(`/api/habits/${habitId}/tracks`, {
-    method: 'POST'
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({date})
   })
 
   if (response.ok) {
-    dispatch(actionAddHabitTrack(habitId))
-    return habitId
+    const habitTrack = await response.json();
+    console.log("FROM THE THUNK AFTER", habitTrack)
+    dispatch(actionAddHabitTrack(habitTrack));
+    return habitTrack;
+  } else {
+    const data = await response.json();
+    console.log(data.errors)
   }
 }
 
@@ -144,6 +153,10 @@ const habitsReducer = (state = {}, action) => {
       delete newState4[action.habitId]
       return newState4;
 
+    case ADD_HABIT_TRACK:
+      const newState5 = {...state};
+      newState5[action.habitTrack['habit_id']]['habit_tracks'].push(action.habitTrack)
+      return newState5;
     default:
       return state;
   }

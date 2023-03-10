@@ -1,8 +1,7 @@
 from flask import Blueprint, jsonify, request
-from app.models import Habit, db
+from app.models import Habit, db, HabitTrack
 from flask_login import login_required
-from app.forms.habit_form import HabitForm
-from app.forms import HabitEditForm
+from app.forms import HabitEditForm, HabitTrackForm, HabitForm
 
 habit_routes = Blueprint('habits', __name__)
 
@@ -68,7 +67,20 @@ def delete_habit(habitId):
 
 @habit_routes.route('/<int:habitId>/tracks', methods=['POST'])
 def add_track(habitId):
-    pass
+    form = HabitTrackForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("--------------------------------------------------------")
+    # print(form.cleaned_data['date'].strftime('%Y-%m-%d'))
+    if form.validate_on_submit():
+        habit_track = HabitTrack(
+            habit_id=habitId,
+            date=form.data['date']
+        )
+        db.session.add(habit_track)
+        db.session.commit()
+        return habit_track.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 @habit_routes.route('/tracks/<int:trackId>', methods=['DELETE'])
 def delete_track(trackId):

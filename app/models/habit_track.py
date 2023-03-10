@@ -13,5 +13,6 @@ class HabitTrack(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'habit_id': self.habit_id,
             'date': self.date
         }
