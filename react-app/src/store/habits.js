@@ -124,7 +124,6 @@ export const deleteHabitTrack = (habitTrackId) => async (dispatch) => {
 
   if (response.ok) {
     const ids = await response.json();
-    console.log("FROM THUNK RES", ids)
     dispatch(actionDeleteHabitTrack(ids))
     return ids
   }
