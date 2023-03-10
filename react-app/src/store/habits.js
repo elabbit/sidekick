@@ -32,9 +32,9 @@ const actionAddHabitTrack = (habitTrack) => ({
   habitTrack
 });
 
-const actionDeleteHabitTrack = (habitTrackId) => ({
+const actionDeleteHabitTrack = (ids) => ({
   type: DELETE_HABIT_TRACK,
-  habitTrackId
+   ids
 });
 
 
@@ -109,7 +109,6 @@ export const addHabitTrack = (habitId, date) => async (dispatch) => {
 
   if (response.ok) {
     const habitTrack = await response.json();
-    console.log("FROM THE THUNK AFTER", habitTrack)
     dispatch(actionAddHabitTrack(habitTrack));
     return habitTrack;
   } else {
@@ -124,8 +123,10 @@ export const deleteHabitTrack = (habitTrackId) => async (dispatch) => {
   })
 
   if (response.ok) {
-    dispatch(actionDeleteHabitTrack(habitTrackId))
-    return habitTrackId
+    const ids = await response.json();
+    console.log("FROM THUNK RES", ids)
+    dispatch(actionDeleteHabitTrack(ids))
+    return ids
   }
 }
 
@@ -157,6 +158,15 @@ const habitsReducer = (state = {}, action) => {
       const newState5 = {...state};
       newState5[action.habitTrack['habit_id']]['habit_tracks'].push(action.habitTrack)
       return newState5;
+
+    case DELETE_HABIT_TRACK:
+      const newState6 = {...state};
+      const habit_tracks = newState6[action.ids.habit_id]['habit_tracks']
+      const trackId = action.ids.track_id
+      const newTracks = habit_tracks.filter(track => track.id !== trackId)
+      newState6[action.ids.habit_id]['habit_tracks'] = newTracks
+      return newState6;
+
 
     default:
       return state;

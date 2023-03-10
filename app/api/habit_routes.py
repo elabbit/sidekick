@@ -85,6 +85,9 @@ def add_track(habitId):
 @habit_routes.route('/tracks/<int:trackId>', methods=['DELETE'])
 def delete_track(trackId):
     deleted_track = HabitTrack.query.get(trackId)
+    habitId = deleted_track.habit_id
+    print("---------------------------------------------")
+    print(habitId)
     db.session.delete(deleted_track)
     db.session.commit()
-    return f'{trackId}'
+    return {"habit_id": habitId,"track_id": trackId}
