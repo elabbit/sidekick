@@ -4,10 +4,11 @@ import dayjs from "dayjs";
 import CalendarContext from "../../context/CalendarContext";
 
 const Weekly = ({ month }) => {
-    const { setMonthIndex, currentDay, setCurrentDay} = useContext(CalendarContext)
+    const { monthIndex, setMonthIndex, currentDay, setCurrentDay, tempMonthIndex, setTempMonthIndex} = useContext(CalendarContext)
 
     function handleToday() {
         setMonthIndex(dayjs().month());
+        setTempMonthIndex(dayjs().month())
         setCurrentDay(dayjs())
     }
 

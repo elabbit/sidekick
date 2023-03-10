@@ -15,7 +15,7 @@ const Calendar = () => {
         <div>
             <div>{dayjs(new Date(currentDay)).format("dddd, MMMM D, YYYY")}</div>
             <Monthly month={currentMonth} setCurrentMonth={setCurrentMonth} />
-                <Weekly month={currentMonth} setCurrentMonth={setCurrentMonth}/>
+            <Weekly month={currentMonth} setCurrentMonth={setCurrentMonth}/>
 
         </div>
     )
