@@ -157,6 +157,7 @@ const habitsReducer = (state = {}, action) => {
       const newState5 = {...state};
       newState5[action.habitTrack['habit_id']]['habit_tracks'].push(action.habitTrack)
       return newState5;
+
     default:
       return state;
   }
