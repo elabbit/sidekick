@@ -82,7 +82,7 @@ def add_track(habitId):
 @habit_routes.route('/<int:habitId>/tracks', methods=['DELETE'])
 def delete_track(habitId):
     edited_habit = Habit.query.get(habitId)
-    date_data_str = request.get_json()  # date = string
+    date_data_str = request.get_json()  # date as string
     date_data = datetime.fromisoformat(date_data_str).date()  # convert string to date object
     tracks = edited_habit.habit_tracked_instances
     for track in tracks:

@@ -4,13 +4,11 @@ import { addHabitTrack, deleteHabitTrack } from "../../store/habits";
 import CalendarContext from "../../context/CalendarContext";
 
 
+
 const AddRemoveHabitTrack = ({ habitId }) => {
     const dispatch = useDispatch()
     const { currentDay } = useContext(CalendarContext)
-    // const habitTracks = useSelector(state => state.habits[habitId]["habit_tracks"])
-    // const trackedDates = habitTracks.map(item => item['date']) || []
-    // const formattedDate = currentDay.utc().format('ddd, DD MMM YYYY 00:00:00 [GMT]')
-    // const habitTrack = habitTracks.filter(item => item['date'] === formattedDate && item['habit_id'] === habitId)
+    const habitTracks = useSelector(state => state.habits[habitId]["habit_tracks"])
 
     let dateOnlyString = currentDay.format().substring(0, 10)
 
