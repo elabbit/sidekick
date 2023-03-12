@@ -2,9 +2,6 @@ const LOAD_HABITS = 'habits/LOAD_HABITS';
 const ADD_HABIT = 'habits/ADD_HABIT';
 const EDIT_HABIT = 'habits/EDIT_HABIT';
 const DELETE_HABIT = 'habits/DELETE_HABIT';
-const LOAD_HABIT_TRACKS = 'habit_tracks/LOAD_HABIT_TRACKS';
-const ADD_HABIT_TRACK = 'habit_tracks/ADD_HABIT_TRACK';
-const DELETE_HABIT_TRACK = 'habit_tracks/DELETE_HABIT_TRACK';
 
 const actionLoadHabits = (habits) => ({
   type: LOAD_HABITS,
@@ -24,17 +21,6 @@ const actionEditHabit = (editedHabit) => ({
 const actionDeleteHabit = (habitId) => ({
   type: DELETE_HABIT,
   habitId
-});
-
-
-const actionAddHabitTrack = (habitTrack) => ({
-  type: ADD_HABIT_TRACK,
-  habitTrack
-});
-
-const actionDeleteHabitTrack = (ids) => ({
-  type: DELETE_HABIT_TRACK,
-   ids
 });
 
 
@@ -159,20 +145,6 @@ const habitsReducer = (state = {}, action) => {
       const newState4 = { ...state };
       delete newState4[action.habitId]
       return newState4;
-
-    case ADD_HABIT_TRACK:
-      const newState5 = {...state};
-      newState5[action.habitTrack['habit_id']]['habit_tracks'].push(action.habitTrack)
-      return newState5;
-
-    case DELETE_HABIT_TRACK:
-      const newState6 = {...state};
-      const habit_tracks = newState6[action.ids.habit_id]['habit_tracks']
-      const trackId = action.ids.track_id
-      const newTracks = habit_tracks.filter(track => track.id !== trackId)
-      newState6[action.ids.habit_id]['habit_tracks'] = newTracks
-      return newState6;
-
 
     default:
       return state;

@@ -48,6 +48,7 @@ const AllHabits = (/* {date} */) => {
                         <div key={habit.id}>
                             <div>{habit.name}</div>
                             <div>{habit.frequency}x a day</div>
+                            <AddRemoveHabitTrack habitId={habit.id} />
                             <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
