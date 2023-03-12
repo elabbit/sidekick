@@ -17,7 +17,12 @@ class Habit(db.Model):
     habit_tracked_instances = db.relationship('HabitTrack', back_populates='habit')
 
     def get_habit_tracks(self):
-        return [track.to_dict() for track in self.habit_tracked_instances]
+        habit_tracks = {}
+        for track in self.habit_tracked_instances:
+            if track.date.isoformat() not in habit_tracks:
+                habit_tracks[track.date.isoformat()] = []
+            habit_tracks[track.date.isoformat()].append(track.to_dict())
+        return habit_tracks
 
     def to_dict(self):
         return {

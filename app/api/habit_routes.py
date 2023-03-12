@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from app.models import Habit, db, HabitTrack
 from flask_login import login_required
 from app.forms import HabitEditForm, HabitTrackForm, HabitForm
+from datetime import datetime
+
 
 habit_routes = Blueprint('habits', __name__)
 
@@ -60,17 +62,11 @@ def delete_habit(habitId):
 
     return f'{habitId}'
 
-# @habit_routes.route('/<int:habitId>/tracks')
-# def habit_tracks(habitId):
-#     pass
-
 
 @habit_routes.route('/<int:habitId>/tracks', methods=['POST'])
 def add_track(habitId):
     form = HabitTrackForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("--------------------------------------------------------")
-    # print(form.cleaned_data['date'].strftime('%Y-%m-%d'))
     if form.validate_on_submit():
         habit_track = HabitTrack(
             habit_id=habitId,
@@ -78,16 +74,21 @@ def add_track(habitId):
         )
         db.session.add(habit_track)
         db.session.commit()
-        return habit_track.to_dict()
+        edited_habit = Habit.query.get(habitId)
+        return edited_habit.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@habit_routes.route('/tracks/<int:trackId>', methods=['DELETE'])
-def delete_track(trackId):
-    deleted_track = HabitTrack.query.get(trackId)
-    habitId = deleted_track.habit_id
-    print("---------------------------------------------")
-    print(habitId)
-    db.session.delete(deleted_track)
-    db.session.commit()
-    return {"habit_id": habitId,"track_id": trackId}
+@habit_routes.route('/<int:habitId>/tracks', methods=['DELETE'])
+def delete_track(habitId):
+    edited_habit = Habit.query.get(habitId)
+    date_data_str = request.get_json()  # date = string
+    date_data = datetime.fromisoformat(date_data_str).date()  # convert string to date object
+    tracks = edited_habit.habit_tracked_instances
+    for track in tracks:
+        if track.date == date_data:
+            db.session.delete(track)
+            db.session.commit()
+            break  # stop after deleting the first matching track
+
+    return edited_habit.to_dict()

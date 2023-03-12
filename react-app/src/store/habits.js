@@ -108,24 +108,31 @@ export const addHabitTrack = (habitId, date) => async (dispatch) => {
   })
 
   if (response.ok) {
-    const habitTrack = await response.json();
-    dispatch(actionAddHabitTrack(habitTrack));
-    return habitTrack;
+    const editedHabit = await response.json();
+    dispatch(actionEditHabit(editedHabit));
+    return editedHabit;
   } else {
     const data = await response.json();
     console.log(data.errors)
   }
 }
 
-export const deleteHabitTrack = (habitTrackId) => async (dispatch) => {
-  const response = await fetch(`/api/habits/tracks/${habitTrackId}`, {
-    method: 'DELETE'
+export const deleteHabitTrack = (habitId, date) => async (dispatch) => {
+  const response = await fetch(`/api/habits/${habitId}/tracks`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(date)
   })
 
   if (response.ok) {
-    const ids = await response.json();
-    dispatch(actionDeleteHabitTrack(ids))
-    return ids
+    const editedHabit = await response.json();
+    dispatch(actionEditHabit(editedHabit));
+    return editedHabit;
+  } else {
+    const data = await response.json();
+    console.log(data.errors)
   }
 }
 
