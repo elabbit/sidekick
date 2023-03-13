@@ -17,7 +17,7 @@ const AddRemoveHabitTrack = ({ habit }) => {
     //Object.entries() converts object to array of key-value pairs
     //Object.fromEntries() converts the filtered array back to an object.
     const filteredDates = Object.fromEntries(
-        Object.entries(habitTracks).filter(([key]) => (dayjs(key).isBetween(startDate, currentDay, null, '[]')) )
+        Object.entries(habitTracks).filter(([key]) => (dayjs(key).isBetween(startDate, currentDay, null, '[]')))
     )
     const sum = Object.values(filteredDates).reduce((acc, val) => acc + val, 0)
 
@@ -27,21 +27,23 @@ const AddRemoveHabitTrack = ({ habit }) => {
     }
 
     const handleRemoveTrack = async (habitId, date) => {
-        await dispatch(deleteHabitTrack(habitId, date))
+
+        if (sum > 0) await dispatch(deleteHabitTrack(habitId, date))
     }
 
     return (
         <div>
-             <div>{sum}/{habit.frequency}x</div>
+            <div>{sum}/{habit.frequency}x</div>
             <form onSubmit={handleAddTrack}>
                 <button type="submit">
                     +
                 </button>
             </form>
-            <div>
-                <button onClick={() => handleRemoveTrack(habit.id, dateOnlyString)}>-</button>
-            </div>
-
+            {sum > 0 && (
+                <div>
+                    <button onClick={() => handleRemoveTrack(habit.id, dateOnlyString)}>-</button>
+                </div>
+            )}
         </div>
     )
 }
