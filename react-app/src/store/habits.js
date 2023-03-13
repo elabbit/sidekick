@@ -35,7 +35,6 @@ export const getUserHabits = (userId) => async (dispatch) => {
 }
 
 export const addHabit = (payload) => async (dispatch) => {
-  console.log("PAYLOAD", payload)
   const response = await fetch('/api/habits/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
