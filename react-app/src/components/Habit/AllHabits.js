@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserHabits } from '../../store/habits';
+import AddRemoveHabitTrack from './AddRemoveHabitTrack';
 import EditHabit from './EditHabitModal';
 
 const AllHabits = (/* {date} */) => {
@@ -30,6 +31,7 @@ const AllHabits = (/* {date} */) => {
                         <div key={habit.id}> {/* on click opens edit habit modal */}
                             <div>{habit.name}</div>
                             <div>{habit.frequency}x a week</div>
+                            <AddRemoveHabitTrack habitId={habit.id} />
                             <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
@@ -46,6 +48,7 @@ const AllHabits = (/* {date} */) => {
                         <div key={habit.id}>
                             <div>{habit.name}</div>
                             <div>{habit.frequency}x a day</div>
+                            <AddRemoveHabitTrack habitId={habit.id} />
                             <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )

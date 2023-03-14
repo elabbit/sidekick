@@ -2,9 +2,6 @@ const LOAD_HABITS = 'habits/LOAD_HABITS';
 const ADD_HABIT = 'habits/ADD_HABIT';
 const EDIT_HABIT = 'habits/EDIT_HABIT';
 const DELETE_HABIT = 'habits/DELETE_HABIT';
-const LOAD_HABIT_TRACKS = 'habit_tracks/LOAD_HABIT_TRACKS';
-const ADD_HABIT_TRACK = 'habit_tracks/ADD_HABIT_TRACK';
-const DELETE_HABIT_TRACK = 'habit_tracks/DELETE_HABIT_TRACK';
 
 const actionLoadHabits = (habits) => ({
   type: LOAD_HABITS,
@@ -26,21 +23,6 @@ const actionDeleteHabit = (habitId) => ({
   habitId
 });
 
-const actionLoadHabitTracks = (habitTracks) => ({
-  type: LOAD_HABIT_TRACKS,
-  habitTracks
-});
-
-const actionAddHabitTrack = (habitTrack) => ({
-  type: ADD_HABIT_TRACK,
-  habitTrack
-});
-
-const actionDeleteHabitTrack = (habitTrackId) => ({
-  type: DELETE_HABIT_TRACK,
-  habitTrackId
-});
-
 
 export const getUserHabits = (userId) => async (dispatch) => {
   const response = await fetch(`/api/habits/${userId}`)
@@ -59,8 +41,6 @@ export const addHabit = (payload) => async (dispatch) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
-
-
 
   if (response.ok) {
     const habit = await response.json();
@@ -104,6 +84,43 @@ export const deleteHabit = (habitId) => async (dispatch) => {
   }
 }
 
+export const addHabitTrack = (habitId, date) => async (dispatch) => {
+  const response = await fetch(`/api/habits/${habitId}/tracks`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({date})
+  })
+
+  if (response.ok) {
+    const editedHabit = await response.json();
+    dispatch(actionEditHabit(editedHabit));
+    return editedHabit;
+  } else {
+    const data = await response.json();
+    console.log(data.errors)
+  }
+}
+
+export const deleteHabitTrack = (habitId, date) => async (dispatch) => {
+  const response = await fetch(`/api/habits/${habitId}/tracks`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(date)
+  })
+
+  if (response.ok) {
+    const editedHabit = await response.json();
+    dispatch(actionEditHabit(editedHabit));
+    return editedHabit;
+  } else {
+    const data = await response.json();
+    console.log(data.errors)
+  }
+}
 
 const habitsReducer = (state = {}, action) => {
   switch (action.type) {
