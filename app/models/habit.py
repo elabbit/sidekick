@@ -20,8 +20,8 @@ class Habit(db.Model):
         habit_tracks = {}
         for track in self.habit_tracked_instances:
             if track.date.isoformat() not in habit_tracks:
-                habit_tracks[track.date.isoformat()] = []
-            habit_tracks[track.date.isoformat()].append(track.to_dict())
+                habit_tracks[track.date.isoformat()] = 0
+            habit_tracks[track.date.isoformat()] += 1
         return habit_tracks
 
     def to_dict(self):
