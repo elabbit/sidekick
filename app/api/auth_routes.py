@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, Icon, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from app.forms import UserEditForm
@@ -109,10 +109,21 @@ def update_icon(id):
     return editedUser.to_dict()
 
 @auth_routes.route('/score/<int:score>', methods=['PUT'])
-def update_icon(score):
+def update_score(score):
     editedUser = User.query.get(current_user.id)
 
     editedUser.score = score
     db.session.commit()
 
+    return editedUser.to_dict()
+
+@auth_routes.route('/poke/<int:pokeId>', methods=['PUT'])
+def update_poke(pokeId):
+    icon = Icon(
+        user_id=current_user.id,
+        icon=pokeId
+    )
+    db.session.add(icon)
+    db.session.commit()
+    editedUser = User.query.get(current_user.id)
     return editedUser.to_dict()

@@ -152,6 +152,19 @@ export const updateScore = (score) => async (dispatch) => {
   }
 }
 
+export const updatePokemon = (pokeId) => async (dispatch) => {
+  const response = await fetch(`/api/auth/poke/${pokeId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data))
+    return 'success';
+  }
+}
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
