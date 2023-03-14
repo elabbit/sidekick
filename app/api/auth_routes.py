@@ -107,3 +107,12 @@ def update_icon(id):
     db.session.commit()
 
     return editedUser.to_dict()
+
+@auth_routes.route('/score/<int:score>', methods=['PUT'])
+def update_icon(score):
+    editedUser = User.query.get(current_user.id)
+
+    editedUser.score = score
+    db.session.commit()
+
+    return editedUser.to_dict()
