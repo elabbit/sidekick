@@ -46,9 +46,11 @@ const PokeGenerator = ({ user }) => {
     // }
 
     const evolvePoke = async () => {
-        if (score - 1 >= 0) {
+        const data2 = await dispatch(updatePokemon(res[Math.floor(Math.random() * res.length)]))
+        if (data2 !== 'success') {
+            alert('You do not have any evolutions available')
+        } else if (score - 1 >= 0) {
             const data = await dispatch(updateScore(score - 1));
-            const data2 = await dispatch(updatePokemon(res[Math.floor(Math.random() * res.length)]))
         } else {
             alert('Do not have enough points to evolve Pokemon')
         }
