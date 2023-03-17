@@ -29,10 +29,12 @@ const PokeGenerator = ({ user }) => {
         if (score - 1 >= 0) {
             const data = await dispatch(updateScore(score - 1));
             let randomStarter = starterPoke[Math.floor(Math.random() * 79)]
-            if(!userPokeArr.includes(randomStarter)){
+            if (!userPokeArr.includes(randomStarter)) {
                 const data2 = await dispatch(updatePokemon(randomStarter))
             } else {
-                randomStarter = starterPoke[Math.floor(Math.random() * 79)]
+                while (userPokeArr.includes(randomStarter)) {
+                    randomStarter = starterPoke[Math.floor(Math.random() * 79)]
+                }
                 await dispatch(updatePokemon(randomStarter))
             }
 
