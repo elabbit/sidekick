@@ -19,6 +19,7 @@ const AddRemoveHabitTrack = ({ habit }) => {
     const filteredDates = Object.fromEntries(
         Object.entries(habitTracks).filter(([key]) => (dayjs(key).isBetween(startDate, currentDay, null, '[]')))
     )
+    
     const sum = Object.values(filteredDates).reduce((acc, val) => acc + val, 0)
 
     const handleAddTrack = async (e) => {
