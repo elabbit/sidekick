@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
 
     user_habits = db.relationship('Habit', back_populates='habit_owner')
     user_icons = db.relationship('Icon', back_populates='icon_owner')
-
+    user_lists = db.relationship('TodoList', back_populates='list_owner')
     @property
     def password(self):
         return self.hashed_password
@@ -41,5 +41,3 @@ class User(db.Model, UserMixin):
             'default_icon': self.default_icon,
             'user_icons': [icon.icon for icon in self.user_icons]
         }
-
-
