@@ -43,13 +43,11 @@ export const addHabit = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const habit = await response.json();
-    console.log(habit)
     dispatch(actionAddHabit(habit))
     return habit
   }
   else {
     const error = await response.json();
-    console.log("ERROR",error)
     return error
   }
 }
@@ -69,7 +67,6 @@ export const editHabit = (habitId, frequency) => async (dispatch) => {
     return editedHabit;
   } else {
     const data = await response.json();
-    console.log(data.errors)
   }
 }
 
