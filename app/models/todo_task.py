@@ -3,6 +3,7 @@ from datetime import date
 
 
 class TodoTask(db.Model):
+    __tablename__ = 'todo_tasks'
     id = db.Column(db.Integer, primary_key=True)
     list_id = db.Column(db.Integer, db.ForeignKey('todo_lists.id'), nullable=False)
     description = db.Column(db.String(500), nullable=False)
