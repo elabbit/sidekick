@@ -28,7 +28,7 @@ const actionDeleteList = (listId) => {
     }
 }
 
-export const thunkLoadLists = (userId) => async (dispatch) => {
+export const loadLists = (userId) => async (dispatch) => {
     const response = await fetc(`/api/todo/lists/${userId}`);
 
     if (response.ok) {
@@ -40,7 +40,7 @@ export const thunkLoadLists = (userId) => async (dispatch) => {
     }
 }
 
-export const thunkCreateList = (listData) => async (dispatch) => {
+export const createList = (listData) => async (dispatch) => {
     const response = await fetch('/api/todo/lists', {
         method: 'POST',
         headers: {
@@ -57,7 +57,7 @@ export const thunkCreateList = (listData) => async (dispatch) => {
 
 }
 
-export const thunkUpdateList = (listData) => async (dispatch) => {
+export const updateList = (listData) => async (dispatch) => {
     const response = await fetch(`/api/todo/lists/${listData.id}`, {
         method: 'PUT',
         headers: {
@@ -74,8 +74,8 @@ export const thunkUpdateList = (listData) => async (dispatch) => {
     }
 }
 
-export const thunkDeleteList = (listId) => async (dispatch) =>{
-    const response = await csrfFetch(`/api/todo/lists/${listId}`, {
+export const deleteList = (listId) => async (dispatch) =>{
+    const response = await fetch(`/api/todo/lists/${listId}`, {
         method: 'DELETE',
     });
 
@@ -86,7 +86,38 @@ export const thunkDeleteList = (listId) => async (dispatch) =>{
     }
 }
 
+export const createTask = (payload) => async (dispatch) => {
+    const response = await fetch('/api/todo/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
 
+      if (response.ok) {
+        const list = await response.json()
+        dispatch(actionUpdateList(list))
+        return list;
+      }
+}
+
+
+export const updateTask = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/todo/lists/${payload.listId}/tasks`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (response.ok) {
+        const list = await response.json()
+        dispatch(actionUpdateList(list))
+        return list;
+      }
+}
+
+// export const deleteTask = () => async (dispatch) => {
+//     const response = await fetch(`/api/todo/tasks/`)
+// }
 
 const todoReducer = (state = {}, action) => {
 
