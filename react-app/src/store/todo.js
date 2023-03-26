@@ -115,9 +115,18 @@ export const updateTask = (payload) => async (dispatch) => {
       }
 }
 
-// export const deleteTask = () => async (dispatch) => {
-//     const response = await fetch(`/api/todo/tasks/`)
-// }
+export const deleteTask = (list) => async (dispatch) => {
+    const response = await fetch('/api/todo/tasks/', {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(actionUpdateList(list))
+        return list
+    } else {
+        const data = await response.json();
+        console.log(data.errors)
+    }
+}
 
 const todoReducer = (state = {}, action) => {
 
