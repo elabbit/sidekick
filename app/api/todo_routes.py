@@ -2,7 +2,7 @@ from flask import Blueprint, request
 
 todo_routes = Blueprint('todo', __name__)
 
-@todo_routes.route('/list')
+@todo_routes.route('/lists/<int:userId>')
 def todo_lists():
     pass
 
