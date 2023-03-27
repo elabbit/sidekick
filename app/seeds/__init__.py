@@ -13,8 +13,8 @@ seed_commands = AppGroup('seed')
 def seed():
     seed_users()
     seed_habits()
-    seed_tasks()
     seed_lists()
+    seed_tasks()
 
     # Add other seed functions here
 
@@ -24,7 +24,7 @@ def seed():
 def undo():
     undo_habits()
     undo_users()
-    undo_tasks()
     undo_lists()
+    undo_tasks()
 
     # Add other undo functions here
