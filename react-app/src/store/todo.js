@@ -29,7 +29,7 @@ const actionDeleteList = (listId) => {
 }
 
 export const loadLists = (userId) => async (dispatch) => {
-    const response = await fetc(`/api/todo/lists/${userId}`);
+    const response = await fetch(`/api/todo/lists/${userId}`);
 
     if (response.ok) {
         const lists = await response.json();
@@ -129,7 +129,17 @@ export const deleteTask = (list) => async (dispatch) => {
 }
 
 const todoReducer = (state = {}, action) => {
-
+    switch (action.type) {
+        case LOAD_LISTS:
+            const newState1 = {};
+            console.log(action)
+            action.lists.todoLists.forEach(list => {
+                newState1[list.id] = list;
+            });
+            return newState1;
+        default:
+            return state;
+    }
 }
 
 export default todoReducer;
