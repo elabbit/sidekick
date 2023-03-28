@@ -57,13 +57,13 @@ export const createList = (listData) => async (dispatch) => {
 
 }
 
-export const updateList = (listData) => async (dispatch) => {
-    const response = await fetch(`/api/todo/lists/${listData.id}`, {
+export const updateList = (listId, name) => async (dispatch) => {
+    const response = await fetch(`/api/todo/lists/${listId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({id: listData.id, name: listData.name})
+        body: JSON.stringify({name})
     })
 
 
