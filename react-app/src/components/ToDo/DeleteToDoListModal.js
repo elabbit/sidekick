@@ -9,6 +9,7 @@ const DeleteToDoList = ({list}) => {
 
     const deleteSpecificList = async(listId) => {
         await dispatch(deleteList(listId))
+        setshowDeleteToDoModal(false)
     }
 
     return (

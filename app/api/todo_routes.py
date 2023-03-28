@@ -48,6 +48,14 @@ def edit_list(listId):
         return edited_list.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@todo_routes.route('/lists/<int:listId>', methods=['DELETE'])
+def delete_list(listId):
+    deleted_list = TodoList.query.get(listId)
+    db.session.delete(deleted_list)
+    db.session.commit()
+
+    return f'{listId}'
+
 
 @todo_routes.route('/<int:listId>/tasks')
 def todo_tasks(listId):
