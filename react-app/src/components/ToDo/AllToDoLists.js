@@ -14,7 +14,7 @@ const AllToDoLists = () => {
             await dispatch(loadLists(sessionUser.id))
         }
         loadToDoLists()
-    }, [dispatch]);
+    }, [dispatch, sessionUser.id]);
 
     return (
         <div>

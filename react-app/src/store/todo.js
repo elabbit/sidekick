@@ -139,7 +139,7 @@ const todoReducer = (state = {}, action) => {
             return newState1;
 
         case CREATE_LIST:
-            const newState2 = {... state};
+            const newState2 = {...state};
             newState2[action.list.id] = action.list
             return newState2;
 
