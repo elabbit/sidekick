@@ -8,6 +8,10 @@ def todo_lists(userId):
     todolists = TodoList.query.filter_by(user_id=userId).all()
     return {'todoLists': [todolist.to_dict() for todolist in todolists]}
 
+@todo_routes.route('/lists', methods=['POST'])
+def create_todo_lists():
+    pass
+
 @todo_routes.route('/<int:listId>/tasks')
 def todo_tasks(listId):
     pass

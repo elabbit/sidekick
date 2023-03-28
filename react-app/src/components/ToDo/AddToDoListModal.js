@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
+import { createList } from "../../store/todo";
 
 const AddToDoList = ({userId}) => {
     const [showModal, setShowModal] = useState(false);
@@ -14,6 +15,12 @@ const AddToDoList = ({userId}) => {
         const payload = {
             user_id: userId,
             name: name
+        }
+        const createdList = await dispatch(createList(payload))
+
+        if(createdList){
+            setName('');
+            setShowModal(false);
         }
     }
 
