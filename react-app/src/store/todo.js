@@ -143,6 +143,16 @@ const todoReducer = (state = {}, action) => {
             newState2[action.list.id] = action.list
             return newState2;
 
+        case UPDATE_LIST:
+            const newState3 = {...state};
+            newState3[action.list.id] = action.list;
+            return newState3;
+
+        case DELETE_LIST:
+            const newState4 = {...state};
+            delete newState4[action.listId]
+            return newState4;
+
         default:
             return state;
     }
