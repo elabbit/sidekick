@@ -29,7 +29,7 @@ const actionDeleteList = (listId) => {
 }
 
 export const loadLists = (userId) => async (dispatch) => {
-    const response = await fetc(`/api/todo/lists/${userId}`);
+    const response = await fetch(`/api/todo/lists/${userId}`);
 
     if (response.ok) {
         const lists = await response.json();
