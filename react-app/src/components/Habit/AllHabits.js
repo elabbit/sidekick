@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserHabits } from '../../store/habits';
+import AllToDoLists from '../ToDo/AllToDoLists';
 import AddRemoveHabitTrack from './AddRemoveHabitTrack';
 import EditHabit from './EditHabitModal';
 
@@ -53,6 +54,7 @@ const AllHabits = (/* {date} */) => {
                     )
                 })}
             </div>
+            <AllToDoLists />
         </div>
     )
 }

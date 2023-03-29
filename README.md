@@ -1,8 +1,15 @@
-# Flask React Project
 
-This is the starter for the Flask React project.
+# Sidekick
 
-## Getting started
+Welcome to Sidekick, your trusty Pokemon companion on your journey to becoming the best version of yourself! With Sidekick, you'll embark on an epic adventure of self-improvement, unlocking new Pokemon and achieving your goals along the way.
+
+Sidekick is more than just a habit tracking and to-do list app - it's a Pokemon adventure! As you use the app and stay consistent with your goals, you'll earn points that you can use to unlock new Pokemon and level up your team.
+
+But that's not all - Sidekick is also a powerful productivity tool, designed to help you stay organized, motivated, and on track. With custom habit trackers, to-do lists, and reminders, you'll never miss a beat as you work towards your goals.
+
+
+
+## Running the application locally
 1. Clone this repository (only this branch)
 
    ```bash
@@ -95,3 +102,7 @@ The following instructions detail an *optional* development setup for M1 Mac use
 | `flask db upgrade`    | Check in with the database and run any needed migrations  |
 | `flask db downgrade`  | Check in with the database and revert any needed migrations  |
 | `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
+| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
+| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
+| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+

@@ -1,20 +1,21 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
+from sqlalchemy import func
 from app.models import User
 
 
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
-    user = User.query.filter(User.email == email).first()
+    user = User.query.filter(func.lower(User.email) == func.lower(email)).first()
     if user:
         raise ValidationError('Email address is already in use.')
 
 def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
-    user = User.query.filter(User.username == username).first()
+    user = User.query.filter(func.lower(User.username) == func.lower(username)).first()
     if user:
         raise ValidationError('Username is already in use.')
 
