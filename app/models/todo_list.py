@@ -11,7 +11,7 @@ class TodoList(db.Model):
     # updated_at = db.Column(db.Date, default=date.today, nullable=False)
 
     list_owner = db.relationship('User', back_populates= 'user_lists')
-    tasks = db.relationship('TodoTask', back_populates='list')
+    tasks = db.relationship('TodoTask', back_populates='list',cascade="all, delete")
 
     def to_dict(self):
         return {
