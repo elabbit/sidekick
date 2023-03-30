@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LoginForm from '../auth/LoginForm';
-import SignUpForm from '../auth/SignUpForm';
+import LoginForm from '../Auth/LoginForm';
+import SignUpForm from '../Auth/SignUpForm';
 
 
 const SplashPage = () => {
