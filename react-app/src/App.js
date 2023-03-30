@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authenticate } from './store/session';
 import HomePage from './components/Navigation/HomePage';
 import SplashPage from './components/Navigation/SplashPage';
+import Splash from './components/Auth/test';
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
       user ?
         <HomePage />
         :
-        <SplashPage/>
+        // <SplashPage/>
+        <Splash/>
   );
 }
 
