@@ -13,7 +13,7 @@ But that's not all - Sidekick is also a powerful productivity tool, designed to 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/elabbit/sidekick.git
    ```
 
 2. Install dependencies
@@ -102,7 +102,3 @@ The following instructions detail an *optional* development setup for M1 Mac use
 | `flask db upgrade`    | Check in with the database and run any needed migrations  |
 | `flask db downgrade`  | Check in with the database and revert any needed migrations  |
 | `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
-
