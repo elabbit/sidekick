@@ -1,1 +1,10 @@
 /* TODO Add site wide styles */
+
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #262626;
+    box-sizing: border-box;
+    background-color: #bdeff0;
+
+}

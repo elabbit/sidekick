@@ -14,10 +14,14 @@ const HomePage = () => {
                     <SideBar />
                 </div>
                 <div id="main-container">
+                    <div id="main-inner">
+
                     <h3>MAIN CONTENT</h3>
                     <Calendar/>
                     <AddHabit/>
                     <AllHabits/>
+
+                    </div>
                 </div>
                 <div id="misc-container">
                     <h3>MISC STATS, ETC</h3>
