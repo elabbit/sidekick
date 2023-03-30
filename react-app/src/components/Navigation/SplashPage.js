@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LoginForm from '../Auth/LoginForm'
+import LoginForm from '../Auth/LoginForm';
 import SignUpForm from '../Auth/SignUpForm';
 
 
