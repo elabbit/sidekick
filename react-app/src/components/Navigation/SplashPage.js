@@ -3,6 +3,8 @@ import LoginForm from '../Auth/LoginForm';
 import SignUpForm from '../Auth/SignUpForm';
 
 
+
+
 const SplashPage = () => {
     const [showLogin, setShowLogin] = useState(true)
     return (
