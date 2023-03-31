@@ -22,7 +22,7 @@ const AllToDoLists = () => {
 
     return (
         <div>
-            <h2>ToDo Lists</h2>
+            <h2>To Do Lists</h2>
             <AddToDoList userId={sessionUser.id} />
             {listsArr && listsArr.map((list) => {
                 return (
