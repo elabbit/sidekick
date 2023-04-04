@@ -2,6 +2,8 @@ import { useState } from "react";
 import DeleteToDoList from "./DeleteToDoListModal";
 import EditToDoList from './EditToDoList';
 import TodoTasks from "./AllToDoTasks";
+import { Modal } from "../../context/Modal";
+
 
 const ListDetails = ({ list }) => {
     const [displayEditListForm, setDisplayEditListForm] = useState(false)
@@ -10,7 +12,7 @@ const ListDetails = ({ list }) => {
         <div>
             {!displayEditListForm ?
                 <div>
-                    <div onClick={()=> setDisplayTasks(!displayTasks)}>
+                    <div onClick={()=> setDisplayTasks(true)}>
                         {list.name}
                     </div>
                     <button onClick={() => setDisplayEditListForm(true)}>Edit List Name</button>
@@ -18,7 +20,12 @@ const ListDetails = ({ list }) => {
                 </div>
                 : <EditToDoList list={list} hideForm={() => setDisplayEditListForm(false)} />
             }
-            {displayTasks && <TodoTasks list={list} />}
+            {displayTasks &&
+            <Modal onClose={()=> setDisplayTasks(false)}>
+                <TodoTasks list={list} />
+            </Modal>
+
+            }
         </div>
     )
 }

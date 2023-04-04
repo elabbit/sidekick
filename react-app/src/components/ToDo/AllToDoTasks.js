@@ -11,7 +11,7 @@ const TodoTasks = ({ list }) => {
 
     return (
         <div>
-
+            <div>{list.name}</div>
             {tasks && tasks.map((task) => (
                 <div key={task.id}>
                     <input
