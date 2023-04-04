@@ -12,7 +12,6 @@ const AllToDoLists = () => {
     const listsArr = lists ? Object.values(lists) : null;
 
 
-
     useEffect(() => {
         const loadToDoLists = async () => {
             await dispatch(loadLists(sessionUser.id))

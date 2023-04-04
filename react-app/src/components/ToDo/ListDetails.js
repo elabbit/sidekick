@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DeleteToDoList from "./DeleteToDoListModal";
 import EditToDoList from './EditToDoList';
+import TodoTasks from "./AllToDoTasks";
 
 const ListDetails = ({ list }) => {
     const [displayEditListForm, setDisplayEditListForm] = useState(false)
@@ -15,6 +16,7 @@ const ListDetails = ({ list }) => {
                 </div>
                 : <EditToDoList list={list} hideForm={() => setDisplayEditListForm(false)} />
             }
+            <TodoTasks list = {list}/>
         </div>
     )
 }
