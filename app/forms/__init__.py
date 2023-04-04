@@ -6,3 +6,4 @@ from .habitedit_form import HabitEditForm
 from .habit_track_form import HabitTrackForm
 from .todo_list_form import ToDoListForm
 from .edittodolist_form import EditToDoListForm
+from .task_form import TaskForm

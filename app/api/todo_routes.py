@@ -57,6 +57,6 @@ def delete_list(listId):
     return f'{listId}'
 
 
-@todo_routes.route('/<int:listId>/tasks')
-def todo_tasks(listId):
+@todo_routes.route('/tasks')
+def todo_tasks():
     pass
