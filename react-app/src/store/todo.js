@@ -86,7 +86,7 @@ export const deleteList = (listId) => async (dispatch) =>{
     }
 }
 
-export const createTask = (payload) => async (dispatch) => {
+export const thunkCreateTask = (payload) => async (dispatch) => {
     const response = await fetch('/api/todo/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

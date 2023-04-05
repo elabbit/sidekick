@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { createTask } from "../../store/todo";
+import { thunkCreateTask } from "../../store/todo";
+import { useDispatch } from "react-redux";
 
 
-const AddTask = () => {
+const AddTask = ({list}) => {
+    const dispatch = useDispatch();
     const [description, setDescription] = useState('')
     const [errors, setErrors] = useState('')
+
+    console.log("LIST ID", list.id)
 
     const createTask = async (e) => {
         e.preventDefault();
@@ -13,10 +17,10 @@ const AddTask = () => {
             setErrors(["Cannot submit an empty task"])
             return
         };
-        let task = await dispatch(createTask({
-            listId: list.id,
+        let task = await dispatch(thunkCreateTask({
+            list_id: list.id,
             description: description,
-            completionStatus: false
+            status: 'false'
         }))
         if (task) {
             setErrors([])
@@ -36,7 +40,7 @@ const AddTask = () => {
                             placeholder='Add a new task...'
                         />
                         <button type="submit">
-                            <i className="fa-solid fa-circle-plus"></i>
+                            Add Task
                         </button>
                     </form>
         </div>

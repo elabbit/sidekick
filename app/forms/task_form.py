@@ -5,3 +5,4 @@ from wtforms.validators import DataRequired
 class TaskForm(FlaskForm):
     list_id = IntegerField("List Id", validators=[DataRequired()])
     description = StringField("Description", validators=[DataRequired()])
+    status = StringField('Status', validators=[DataRequired()])

@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from app.models import TodoList, db
-from app.forms import ToDoListForm, EditToDoListForm
+from app.models import TodoList, db, TodoTask
+from app.forms import ToDoListForm, EditToDoListForm, TaskForm
 
 todo_routes = Blueprint('todo', __name__)
 
@@ -57,6 +57,22 @@ def delete_list(listId):
     return f'{listId}'
 
 
-@todo_routes.route('/tasks')
+@todo_routes.route('/tasks', methods=['POST'])
 def todo_tasks():
-    pass
+    form = TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print('FORM DATA', form.data)
+    if form.validate_on_submit():
+        print("HITTING THIS LINE---------------------------------")
+        listId = form.data['list_id']
+        task = TodoTask(
+            list_id =listId,
+            description = form.data['description'],
+            status= form.data['status'] == 'false'
+        )
+        db.session.add(task)
+        db.session.commit()
+
+        edited_list = TodoList.query.get(listId)
+        return edited_list.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
