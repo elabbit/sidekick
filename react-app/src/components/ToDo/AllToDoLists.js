@@ -28,6 +28,8 @@ const AllToDoLists = () => {
                     <div key={list.id}>
                         <ListDetails list={list}/>
                     </div>
+
+                    
                 )
             })}
             <div>

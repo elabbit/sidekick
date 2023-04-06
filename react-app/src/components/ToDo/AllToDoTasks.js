@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import AddTask from './AddTasks';
 
 const TodoTasks = ({ list }) => {
-    const dispatch = useDispatch();
+    const [description, setDescription] = useState('')
     const listId = list.id
     const tasks = Object.values(useSelector(state => state.todolists[listId]['tasks']))
 

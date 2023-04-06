@@ -3,12 +3,15 @@ import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { deleteList } from "../../store/todo";
 
-const DeleteToDoList = ({list}) => {
+const DeleteToDoList = ({list, item}) => {
     const [showDeleteToDoModal, setshowDeleteToDoModal] = useState(false);
     const dispatch = useDispatch();
 
     const deleteSpecificList = async(listId) => {
+
+        if (item === "list") {
         await dispatch(deleteList(listId))
+        }
     }
 
 
@@ -22,7 +25,7 @@ const DeleteToDoList = ({list}) => {
                             <h2>Delete Confirmation</h2>
                         </div>
                         <div>
-                            <div>{`Are you sure you want to remove this List?`}</div>
+                            <div>{`Are you sure you want to remove this item?`}</div>
                         </div>
                         <div>
                             <button onClick={() => deleteSpecificList(list.id)}>Delete</button>

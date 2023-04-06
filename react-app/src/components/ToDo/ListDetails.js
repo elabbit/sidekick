@@ -16,7 +16,7 @@ const ListDetails = ({ list }) => {
                         {list.name}
                     </div>
                     <button onClick={() => setDisplayEditListForm(true)}>Edit List Name</button>
-                    <DeleteToDoList list={list} />
+                    <DeleteToDoList list={list} item={'list'} />
                 </div>
                 : <EditToDoList list={list} hideForm={() => setDisplayEditListForm(false)} />
             }
