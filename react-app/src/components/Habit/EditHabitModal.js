@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { editHabit } from "../../store/habits";
 import DeleteHabit from "./DeleteHabitModal";
+import EditIcon from '../../icons/edit-icon.png';
+import './Habit.css';
 
 const EditHabit = ({habit}) => {
     const [showModal, setShowModal] = useState(false);
@@ -30,7 +32,7 @@ const EditHabit = ({habit}) => {
 
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>Edit Habit</button>
+            <button className='edit-habit-btn' onClick={() => setShowModal(true)}><img src={EditIcon} className='edit-icon' /></button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <form onSubmit={handleSubmit}>

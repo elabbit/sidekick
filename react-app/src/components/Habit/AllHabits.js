@@ -4,6 +4,7 @@ import { getUserHabits } from '../../store/habits';
 import AllToDoLists from '../ToDo/AllToDoLists';
 import AddRemoveHabitTrack from './AddRemoveHabitTrack';
 import EditHabit from './EditHabitModal';
+import './Habit.css';
 
 const AllHabits = (/* {date} */) => {
     const dispatch = useDispatch();
@@ -29,10 +30,10 @@ const AllHabits = (/* {date} */) => {
 
                     //if conditional here to display only habits w/ start dates before current date
                     return (
-                        <div key={habit.id}> {/* on click opens edit habit modal */}
-                            <div>{habit.name}</div>
+                        <div key={habit.id} className='habit-item'> {/* on click opens edit habit modal */}
+                            <div className='habit-header'>{habit.name}</div>
 
-                            <AddRemoveHabitTrack habit={habit} />
+                            <AddRemoveHabitTrack habit={habit}/>
                             <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
@@ -48,7 +49,7 @@ const AllHabits = (/* {date} */) => {
                     return (
                         <div key={habit.id}>
                             <div>{habit.name}</div>
-                            <AddRemoveHabitTrack habit={habit} />
+                            <AddRemoveHabitTrack habit={habit}/>
                             <EditHabit habit={habit} userId={sessionUser.id}/>
                         </div>
                     )
