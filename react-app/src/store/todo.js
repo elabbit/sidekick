@@ -101,8 +101,8 @@ export const thunkCreateTask = (payload) => async (dispatch) => {
 }
 
 
-export const updateTask = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/todo/lists/${payload.listId}/tasks`, {
+export const thunkUpdateTask = (payload, task) => async (dispatch) => {
+    const response = await fetch(`/api/todo/tasks/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

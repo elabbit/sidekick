@@ -86,3 +86,16 @@ def delete_task(taskId):
     db.session.commit()
     edited_list = TodoList.query.get(listId)
     return edited_list.to_dict()
+
+@todo_routes.route('/tasks/<int:taskId>', methods=['PUT'])
+def update_task(taskId):
+    form = TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        edited_task = TodoTask.query.get(taskId)
+        edited_task.description = form.data['description']
+        db.session.commit()
+        listId = form.data['list_id']
+        list = TodoList.query.get(listId)
+
+        return list.to_dict()

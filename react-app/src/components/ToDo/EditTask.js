@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { thunkUpdateTask } from '../../store/todo';
+import { useDispatch, useSelector } from 'react-redux';
 
-const EditTask = ({ task, editingTaskId, setEditingTaskId }) => {
+
+const EditTask = ({ task, listId, editingTaskId, setEditingTaskId }) => {
     const [description, setDescription] = useState('')
+    const [errors, setErrors] = useState([])
+    const dispatch = useDispatch();
 
     const openEditTaskForm = (task) => {
         setEditingTaskId(task.id)
@@ -11,6 +16,27 @@ const EditTask = ({ task, editingTaskId, setEditingTaskId }) => {
     const closeEditTaskForm = () => {
         setEditingTaskId(null)
         setDescription('')
+    }
+
+    const updateTask = async (e, task) => {
+        e.preventDefault();
+        let whitespace = /^\s*$/;
+
+        if (description.length < 0 || whitespace.test(description)) {
+            return errors.push("Cannot submit an empty task")
+        };
+
+        const taskData = {
+            list_id: listId,
+            description: description,
+            status: 'false'
+        }
+        let updatedTask = await dispatch(thunkUpdateTask(taskData, task))
+        if (updatedTask) {
+            setErrors([])
+            setDescription('')
+            setEditingTaskId(null)
+        }
     }
 
     return (
@@ -23,7 +49,7 @@ const EditTask = ({ task, editingTaskId, setEditingTaskId }) => {
 
 
             {task.id === editingTaskId &&
-                <form>
+                <form onSubmit={(e) => updateTask(e, task)}>
                     <input
                         type='text'
                         value={description}

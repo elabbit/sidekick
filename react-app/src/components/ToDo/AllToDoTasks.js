@@ -9,7 +9,9 @@ const TodoTasks = ({ list, setSelectedList }) => {
     const [editingTaskId, setEditingTaskId] = useState(null);
     const listId = list.id
     const tasks = Object.values(useSelector(state => state.todolists[listId]['tasks']))
+    const [taskStatuses, setTaskStatuses] = useState(tasks.reduce((acc, cur) => { acc[cur.id] = false; return acc; }, {}));
 
+    console.log(taskStatuses)
     const deleteTask = async (taskId) => {
         await dispatch(thunkDeleteTask(taskId))
     }
@@ -27,7 +29,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
                         </>
                     }
 
-                    <EditTask task={task} setEditingTaskId={setEditingTaskId} editingTaskId={editingTaskId} />
+                    <EditTask task={task} setEditingTaskId={setEditingTaskId} editingTaskId={editingTaskId} listId={listId}/>
 
                     {editingTaskId !== task.id &&
                         <button type="submit" onClick={() => deleteTask(task.id)}>
@@ -38,7 +40,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
             ))}
 
             <AddTask list={list} />
-            
+
         </div>
     )
 }
