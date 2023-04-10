@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import AddTask from './AddTasks';
 
-const TodoTasks = ({ list }) => {
+const TodoTasks = ({ list, setSelectedList }) => {
     const [description, setDescription] = useState('')
     const listId = list.id
     const tasks = Object.values(useSelector(state => state.todolists[listId]['tasks']))
@@ -11,6 +11,7 @@ const TodoTasks = ({ list }) => {
 
     return (
         <div>
+            <button onClick={()=>setSelectedList(null)}>Back</button>
             <div>{list.name}</div>
             {tasks && tasks.map((task) => (
                 <div key={task.id}>
