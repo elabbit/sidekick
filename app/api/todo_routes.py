@@ -76,3 +76,13 @@ def todo_tasks():
         edited_list = TodoList.query.get(listId)
         return edited_list.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@todo_routes.route('/tasks/<int:taskId>', methods=['DELETE'])
+def delete_task(taskId):
+    deleted_task = TodoTask.query.get(taskId)
+    print('--------------------------------------')
+    listId = deleted_task.list_id
+    db.session.delete(deleted_task)
+    db.session.commit()
+    edited_list = TodoList.query.get(listId)
+    return edited_list.to_dict()

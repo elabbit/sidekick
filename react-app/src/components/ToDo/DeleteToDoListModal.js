@@ -3,15 +3,12 @@ import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import { deleteList } from "../../store/todo";
 
-const DeleteToDoList = ({list, item}) => {
+const DeleteToDoList = ({list}) => {
     const [showDeleteToDoModal, setshowDeleteToDoModal] = useState(false);
     const dispatch = useDispatch();
 
     const deleteSpecificList = async(listId) => {
-
-        if (item === "list") {
         await dispatch(deleteList(listId))
-        }
     }
 
 

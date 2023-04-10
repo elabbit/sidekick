@@ -115,11 +115,13 @@ export const updateTask = (payload) => async (dispatch) => {
       }
 }
 
-export const deleteTask = (list) => async (dispatch) => {
-    const response = await fetch('/api/todo/tasks/', {
+export const thunkDeleteTask = (taskId) => async (dispatch) => {
+    const response = await fetch(`/api/todo/tasks/${taskId}`, {
         method: 'DELETE'
     })
     if (response.ok) {
+        const list = await response.json()
+        console.log("FROM DELETE THUNK", list)
         dispatch(actionUpdateList(list))
         return list
     } else {
