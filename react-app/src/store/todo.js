@@ -121,7 +121,6 @@ export const thunkDeleteTask = (taskId) => async (dispatch) => {
     })
     if (response.ok) {
         const list = await response.json()
-        console.log("FROM DELETE THUNK", list)
         dispatch(actionUpdateList(list))
         return list
     } else {

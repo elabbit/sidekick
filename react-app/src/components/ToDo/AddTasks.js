@@ -8,7 +8,6 @@ const AddTask = ({list}) => {
     const [description, setDescription] = useState('')
     const [errors, setErrors] = useState('')
 
-    console.log("LIST ID", list.id)
 
     const createTask = async (e) => {
         e.preventDefault();
