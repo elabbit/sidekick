@@ -64,12 +64,14 @@ def todo_tasks():
     print('FORM DATA', form.data)
     if form.validate_on_submit():
         print("HITTING THIS LINE---------------------------------")
+        print(form.data['status'])
         listId = form.data['list_id']
         task = TodoTask(
             list_id =listId,
             description = form.data['description'],
-            status= form.data['status'] == 'false'
+            status= form.data['status'] == 'true'
         )
+        print(task)
         db.session.add(task)
         db.session.commit()
 
@@ -96,7 +98,7 @@ def update_task(taskId):
         edited_task.description = form.data['description']
         edited_task.status = form.data['status'] == 'true'
         db.session.commit()
-        
+
         listId = form.data['list_id']
         list = TodoList.query.get(listId)
 

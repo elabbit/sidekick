@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AddTask from './AddTasks';
 import { thunkDeleteTask, thunkUpdateTask } from '../../store/todo';
@@ -16,6 +16,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
         }, {})
     );
 
+
     console.log(taskStatuses)
 
     const deleteTask = async (taskId) => {
@@ -24,17 +25,23 @@ const TodoTasks = ({ list, setSelectedList }) => {
 
     const handleCheck = async (e, task) => {
         e.preventDefault();
-        const isChecked = taskStatuses[task.id] === false ? true : false;
         const updatedTask = {
             ...task,
-            status: isChecked ? 'true' : 'false'
+            status: taskStatuses[task.id] === false ? "true" : "false"
         };
 
         await dispatch(thunkUpdateTask(updatedTask, task));
 
         setTaskStatuses({
             ...taskStatuses,
-            [task.id]: isChecked
+            [task.id]: taskStatuses[task.id] === false ? false : true
+        });
+    };
+
+    const deleteCheckedTasks = async () => {
+        const checkedTasks = tasks.filter(task => taskStatuses[task.id] === true);
+        checkedTasks.forEach(async (task) => {
+            await dispatch(thunkDeleteTask(task.id));
         });
     };
 
@@ -47,7 +54,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
                     {editingTaskId !== task.id &&
                         <>
                             <input type='checkbox'
-                                checked={taskStatuses[task.id] === false ? false : true}
+                                checked={taskStatuses[task.id] === false || taskStatuses[task.id] === undefined ? false : true}
                                 onChange={(e) => handleCheck(e, task)}
                             />
                             <label className='task-label'>{task.description}</label>
@@ -65,6 +72,8 @@ const TodoTasks = ({ list, setSelectedList }) => {
             ))}
 
             <AddTask list={list} />
+            <button onClick={deleteCheckedTasks}>Clear Checked Tasks</button>
+
 
         </div>
     )
