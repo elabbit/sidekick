@@ -8,14 +8,17 @@ const TodoTasks = ({ list, setSelectedList }) => {
     const dispatch = useDispatch();
     const [editingTaskId, setEditingTaskId] = useState(null);
     const listId = list.id
-    const tasks = Object.values(useSelector(state => state.todolists[listId]['tasks']))
-    const [taskStatuses, setTaskStatuses] = useState(() =>
-        tasks.reduce((acc, task) => {
-            acc[task.id] = task.status;
-            return acc;
-        }, {})
-    );
+    const tasks = useSelector(state => state.todolists[listId]['tasks'])
+    const [taskStatuses, setTaskStatuses] = useState({});
 
+    useEffect(() => {
+        const newTaskStatuses = {};
+        const tasksArr = Object.values(tasks)
+        tasksArr.forEach((task) => {
+          newTaskStatuses[task.id] = task.status === true;
+        });
+        setTaskStatuses(newTaskStatuses);
+      }, [tasks]);
 
     console.log(taskStatuses)
     console.log(tasks)
@@ -39,14 +42,14 @@ const TodoTasks = ({ list, setSelectedList }) => {
     };
 
     const deleteCheckedTasks = async () => {
-        const checkedTasks = tasks.filter(task => taskStatuses[task.id] === true);
+        const checkedTasks = Object.values(tasks).filter(task => taskStatuses[task.id] === true);
         checkedTasks.forEach(async (task) => {
             await dispatch(thunkDeleteTask(task.id));
         });
     };
 
     const uncheckAllTasks = () => {
-        const checkedTasks = tasks.filter(task => taskStatuses[task.id] === true);
+        const checkedTasks = Object.values(tasks).filter(task => taskStatuses[task.id] === true);
         checkedTasks.forEach(async (task) => {
             const updatedTask = {
                 ...task,
@@ -56,7 +59,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
         });
 
         const newTaskStatuses = {};
-        tasks.forEach(task => {
+        Object.values(tasks).forEach(task => {
           newTaskStatuses[task.id] = false;
         });
 
@@ -68,7 +71,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
         <div>
             <button onClick={() => setSelectedList(null)}>Back</button>
             <div>{list.name}</div>
-            {tasks && tasks.map((task) => (
+            {tasks && Object.values(tasks).map((task) => (
                 <div key={task.id}>
                     {editingTaskId !== task.id &&
                         <>
