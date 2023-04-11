@@ -45,6 +45,25 @@ const TodoTasks = ({ list, setSelectedList }) => {
         });
     };
 
+    const uncheckAllTasks = () => {
+        const checkedTasks = tasks.filter(task => taskStatuses[task.id] === true);
+        checkedTasks.forEach(async (task) => {
+            const updatedTask = {
+                ...task,
+                status: "false"
+            }
+            await dispatch(thunkUpdateTask(updatedTask, task));
+        });
+
+        const newTaskStatuses = {};
+        tasks.forEach(task => {
+          newTaskStatuses[task.id] = false;
+        });
+
+        setTaskStatuses(newTaskStatuses);
+      };
+
+
     return (
         <div>
             <button onClick={() => setSelectedList(null)}>Back</button>
@@ -72,8 +91,9 @@ const TodoTasks = ({ list, setSelectedList }) => {
             ))}
 
             <AddTask list={list} />
-            <button onClick={deleteCheckedTasks}>Delete Checked Tasks</button>
 
+            <button onClick={deleteCheckedTasks}>Delete Checked Tasks</button>
+            <button onClick={uncheckAllTasks}>Uncheck All</button>
 
         </div>
     )

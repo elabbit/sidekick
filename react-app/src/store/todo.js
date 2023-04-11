@@ -100,7 +100,6 @@ export const thunkCreateTask = (payload) => async (dispatch) => {
       }
 }
 
-
 export const thunkUpdateTask = (payload, task) => async (dispatch) => {
     const response = await fetch(`/api/todo/tasks/${task.id}`, {
         method: 'PUT',
