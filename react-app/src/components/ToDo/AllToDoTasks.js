@@ -34,7 +34,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
 
         setTaskStatuses({
             ...taskStatuses,
-            [task.id]: taskStatuses[task.id] === false ? false : true
+            [task.id]: taskStatuses[task.id] === false ? true : false
         });
     };
 
@@ -72,7 +72,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
             ))}
 
             <AddTask list={list} />
-            <button onClick={deleteCheckedTasks}>Clear Checked Tasks</button>
+            <button onClick={deleteCheckedTasks}>Delete Checked Tasks</button>
 
 
         </div>
