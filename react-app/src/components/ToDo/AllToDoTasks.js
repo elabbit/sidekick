@@ -18,7 +18,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
 
 
     console.log(taskStatuses)
-
+    console.log(tasks)
     const deleteTask = async (taskId) => {
         await dispatch(thunkDeleteTask(taskId))
     }
