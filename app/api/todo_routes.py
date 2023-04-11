@@ -94,7 +94,9 @@ def update_task(taskId):
     if form.validate_on_submit():
         edited_task = TodoTask.query.get(taskId)
         edited_task.description = form.data['description']
+        edited_task.status = form.data['status'] == 'true'
         db.session.commit()
+        
         listId = form.data['list_id']
         list = TodoList.query.get(listId)
 
