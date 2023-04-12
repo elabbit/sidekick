@@ -86,7 +86,7 @@ export const deleteList = (listId) => async (dispatch) =>{
     }
 }
 
-export const createTask = (payload) => async (dispatch) => {
+export const thunkCreateTask = (payload) => async (dispatch) => {
     const response = await fetch('/api/todo/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -100,9 +100,8 @@ export const createTask = (payload) => async (dispatch) => {
       }
 }
 
-
-export const updateTask = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/todo/lists/${payload.listId}/tasks`, {
+export const thunkUpdateTask = (payload, task) => async (dispatch) => {
+    const response = await fetch(`/api/todo/tasks/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -115,11 +114,12 @@ export const updateTask = (payload) => async (dispatch) => {
       }
 }
 
-export const deleteTask = (list) => async (dispatch) => {
-    const response = await fetch('/api/todo/tasks/', {
+export const thunkDeleteTask = (taskId) => async (dispatch) => {
+    const response = await fetch(`/api/todo/tasks/${taskId}`, {
         method: 'DELETE'
     })
     if (response.ok) {
+        const list = await response.json()
         dispatch(actionUpdateList(list))
         return list
     } else {
