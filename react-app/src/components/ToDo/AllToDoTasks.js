@@ -11,6 +11,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
     const tasks = useSelector(state => state.todolists[listId]['tasks'])
     const [taskStatuses, setTaskStatuses] = useState({});
 
+
     useEffect(() => {
         const newTaskStatuses = {};
         const tasksArr = Object.values(tasks)
@@ -20,8 +21,6 @@ const TodoTasks = ({ list, setSelectedList }) => {
         setTaskStatuses(newTaskStatuses);
       }, [tasks]);
 
-    console.log(taskStatuses)
-    console.log(tasks)
     const deleteTask = async (taskId) => {
         await dispatch(thunkDeleteTask(taskId))
     }
@@ -66,6 +65,26 @@ const TodoTasks = ({ list, setSelectedList }) => {
         setTaskStatuses(newTaskStatuses);
       };
 
+    const checkAllTasks = () => {
+        const uncheckedTasks = Object.values(tasks).filter(task => taskStatuses[task.id] === false);
+        uncheckedTasks.forEach(async (task) => {
+            const updatedTask = {
+                ...task,
+                status: "true"
+            }
+
+            await dispatch(thunkUpdateTask(updatedTask, task));
+        });
+
+        const newTaskStatuses = {};
+        Object.values(tasks).forEach(task => {
+          newTaskStatuses[task.id] = true;
+        });
+
+        setTaskStatuses(newTaskStatuses);
+
+    }
+
 
     return (
         <div>
@@ -97,6 +116,7 @@ const TodoTasks = ({ list, setSelectedList }) => {
 
             <button onClick={deleteCheckedTasks}>Delete Checked Tasks</button>
             <button onClick={uncheckAllTasks}>Uncheck All</button>
+            <button onClick={checkAllTasks}>Check All</button>
 
         </div>
     )
