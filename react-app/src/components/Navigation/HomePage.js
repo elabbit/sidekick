@@ -7,7 +7,7 @@ import { useState } from "react";
 import AllToDoLists from "../ToDo/AllToDoLists";
 
 const HomePage = () => {
-    const [showHabit, setShowHabit] = useState(false)
+    const [showHabit, setShowHabit] = useState(true)
     const [showToDo, setShowToDo] = useState(false)
 
     const displayHabit = () => {
