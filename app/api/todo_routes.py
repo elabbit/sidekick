@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from app.models import TodoList, db
-from app.forms import ToDoListForm, EditToDoListForm
+from app.models import TodoList, db, TodoTask
+from app.forms import ToDoListForm, EditToDoListForm, TaskForm
 
 todo_routes = Blueprint('todo', __name__)
 
@@ -57,6 +57,49 @@ def delete_list(listId):
     return f'{listId}'
 
 
-@todo_routes.route('/<int:listId>/tasks')
-def todo_tasks(listId):
-    pass
+@todo_routes.route('/tasks', methods=['POST'])
+def todo_tasks():
+    form = TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print('FORM DATA', form.data)
+    if form.validate_on_submit():
+        print("HITTING THIS LINE---------------------------------")
+        print(form.data['status'])
+        listId = form.data['list_id']
+        task = TodoTask(
+            list_id =listId,
+            description = form.data['description'],
+            status= form.data['status'] == 'true'
+        )
+        print(task)
+        db.session.add(task)
+        db.session.commit()
+
+        edited_list = TodoList.query.get(listId)
+        return edited_list.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@todo_routes.route('/tasks/<int:taskId>', methods=['DELETE'])
+def delete_task(taskId):
+    deleted_task = TodoTask.query.get(taskId)
+    print('--------------------------------------')
+    listId = deleted_task.list_id
+    db.session.delete(deleted_task)
+    db.session.commit()
+    edited_list = TodoList.query.get(listId)
+    return edited_list.to_dict()
+
+@todo_routes.route('/tasks/<int:taskId>', methods=['PUT'])
+def update_task(taskId):
+    form = TaskForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        edited_task = TodoTask.query.get(taskId)
+        edited_task.description = form.data['description']
+        edited_task.status = form.data['status'] == 'true'
+        db.session.commit()
+
+        listId = form.data['list_id']
+        list = TodoList.query.get(listId)
+
+        return list.to_dict()

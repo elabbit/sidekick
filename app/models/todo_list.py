@@ -14,8 +14,10 @@ class TodoList(db.Model):
     tasks = db.relationship('TodoTask', back_populates='list',cascade="all, delete")
 
     def to_dict(self):
+        tasks_dict = {task.id: task.to_dict() for task in self.tasks}
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'name': self.name
+            'name': self.name,
+            'tasks': tasks_dict
         }

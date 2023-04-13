@@ -22,7 +22,7 @@ const DeleteToDoList = ({list}) => {
                             <h2>Delete Confirmation</h2>
                         </div>
                         <div>
-                            <div>{`Are you sure you want to remove this List?`}</div>
+                            <div>{`Are you sure you want to remove this item?`}</div>
                         </div>
                         <div>
                             <button onClick={() => deleteSpecificList(list.id)}>Delete</button>

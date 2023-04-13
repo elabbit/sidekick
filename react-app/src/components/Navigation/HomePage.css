@@ -1,5 +1,29 @@
 #home-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    min-width:1000px;
+}
+
+#side-container{
+    border:red 1px solid;
+width:250px;
+}
+
+#main-container{
+    border:green 1px solid;
+    width:100%;
+}
+
+#main-inner{
+    margin: auto;
+    border:teal 1px solid;
+    width:80%;
+    max-width: 900px;
+}
+
+#misc-container{
+    border:blue 1px solid;
+    width:250px;
+
 }
