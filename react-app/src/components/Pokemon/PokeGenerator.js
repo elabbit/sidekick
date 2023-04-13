@@ -20,8 +20,11 @@ const PokeGenerator = ({ user }) => {
 
     let res = []
     for (let i = 0; i < userPokeArr.length; i++) {
-        if (canEvolve(userPokeArr[i]) && !userPokeArr.includes(userPokeArr[i] + 1)) {
+        if (canEvolve(userPokeArr[i]) && !userPokeArr.includes(userPokeArr[i] + 1) && !userPokeArr.includes(133)) {
             res.push(userPokeArr[i] + 1)
+        }
+        if (userPokeArr.includes(133)){
+            res.push(134,135,136)
         }
     }
 
