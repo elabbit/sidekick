@@ -23,6 +23,9 @@ const PokeGenerator = ({ user }) => {
         if (canEvolve(userPokeArr[i]) && !userPokeArr.includes(userPokeArr[i] + 1)) {
             res.push(userPokeArr[i] + 1)
         }
+        if (userPokeArr.includes(133)){
+            res.push(134,135,136)
+        }
     }
 
     const generatePokemon = async () => {
