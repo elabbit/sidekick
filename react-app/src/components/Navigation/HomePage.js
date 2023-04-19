@@ -48,7 +48,7 @@ const HomePage = () => {
                             <AllToDoLists />
                         </div>
                     )}
-
+                    </div>
                 </div>
                 <div id="misc-container">
                     <h3>MISC STATS, ETC</h3>
