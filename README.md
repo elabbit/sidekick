@@ -57,14 +57,14 @@ But that's not all - Sidekick is also a powerful productivity tool, designed to 
 ### Dev Containers (OPTIONAL for M1 Users)
 The following instructions detail an *optional* development setup for M1 Mac users having issues with the `psycopg` package.
 
-1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed. 
-2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer. 
+1. Make sure you have the [Microsoft Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed.
+2. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your computer.
 3. Clone the repository (only this branch)
    ```bash
    git clone https://github.com/appacademy-starters/python-project-starter.git
    ```
-4. Open the repo in VS Code. 
-5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner. 
+4. Open the repo in VS Code.
+5. Click "Open in Container" when VS Code prompts to open container in the bottom right hand corner.
 6. **Be Patient!** The initial install will take a LONG time, it's building a container that has postgres preconfigured and even installing all your project dependencies. (For both flask and react!)
 
    **Note:** This will take much less time on future starts because everything will be cached.
