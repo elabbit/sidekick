@@ -1,0 +1,10 @@
+#splash-container{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-width:1000px;
+
+    background-image: url('../../images/pokemonsplash.jpg');
+}
