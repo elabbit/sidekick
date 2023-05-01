@@ -4,13 +4,9 @@ import dayjs from "dayjs";
 import CalendarContext from "../../context/CalendarContext";
 
 const Weekly = ({ month }) => {
-    const { monthIndex, setMonthIndex, currentDay, setCurrentDay, tempMonthIndex, setTempMonthIndex} = useContext(CalendarContext)
+    const { currentDay} = useContext(CalendarContext)
 
-    function handleToday() {
-        setMonthIndex(dayjs().month());
-        setTempMonthIndex(dayjs().month())
-        setCurrentDay(dayjs())
-    }
+
 
     const findWeek = () => {
         let weekIndex;
@@ -28,16 +24,16 @@ const Weekly = ({ month }) => {
     }
 
     return (
-        <div>
-            <button onClick={handleToday}>Today</button>
+        <div id="weekly-container">
+
             <div className="weekdays">
-                <div>S</div>
-                <div>M</div>
-                <div>T</div>
-                <div>W</div>
-                <div>T</div>
-                <div>F</div>
-                <div>S</div>
+                <div>SUN</div>
+                <div>MON</div>
+                <div>TUE</div>
+                <div>WED</div>
+                <div>THU</div>
+                <div>FRI</div>
+                <div>SAT</div>
             </div>
             <div className="week-container">
                 {month[findWeek()].map((day, i) => (

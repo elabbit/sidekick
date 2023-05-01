@@ -8,15 +8,25 @@ import Weekly from "./Weekly";
 
 
 const Calendar = () => {
-    const { currentDay } = useContext(CalendarContext)
+    const { monthIndex, setMonthIndex, currentDay, setCurrentDay, tempMonthIndex, setTempMonthIndex} = useContext(CalendarContext)
     const [currentMonth, setCurrentMonth] = useState(getMonth(currentDay.month()));
 
-    return (
-        <div>
-            <div>{dayjs(new Date(currentDay)).format("dddd, MMMM D, YYYY")}</div>
-            <Monthly month={currentMonth} setCurrentMonth={setCurrentMonth} />
-            <Weekly month={currentMonth} setCurrentMonth={setCurrentMonth}/>
+    function handleToday() {
+        setMonthIndex(dayjs().month());
+        setTempMonthIndex(dayjs().month())
+        setCurrentDay(dayjs())
+    }
 
+    return (
+        <div id="calendar-container">
+            <div id="calendar-header">
+                {dayjs(new Date(currentDay)).format("dddd, MMMM D, YYYY")}
+                <div id="calendar-header-right">
+                <button id="today-button" onClick={handleToday}>Today</button>
+                <Monthly month={currentMonth} setCurrentMonth={setCurrentMonth} />
+                </div>
+            </div>
+            <Weekly month={currentMonth} setCurrentMonth={setCurrentMonth} />
         </div>
     )
 }

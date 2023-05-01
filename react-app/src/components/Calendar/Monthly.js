@@ -35,7 +35,7 @@ const Monthly = ({ month, setCurrentMonth }) => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Calendar</button>
+            <i class="fa-solid fa-calendar-days monthly" onClick={() => setShowModal(true)}/>
             {showModal && (
                 <Modal onClose={handleClose}>
                     <div>
