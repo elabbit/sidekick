@@ -22,7 +22,7 @@ const Calendar = () => {
             <div id="calendar-header">
                 {dayjs(new Date(currentDay)).format("dddd, MMMM D, YYYY")}
                 <div id="calendar-header-right">
-                <button id="today-button" onClick={handleToday}>Today</button>
+                <button className="today-button" onClick={handleToday}>Today</button>
                 <Monthly month={currentMonth} setCurrentMonth={setCurrentMonth} />
                 </div>
             </div>

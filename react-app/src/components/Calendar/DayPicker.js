@@ -13,6 +13,7 @@ const DayPicker = ({day}) => {
         if (currentDay.format('DD-MM-YY') === day.format('DD-MM-YY')) {
             classString += " day-current"
         }
+
         return classString
     }
 

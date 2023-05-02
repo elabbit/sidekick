@@ -38,14 +38,14 @@ const Monthly = ({ month, setCurrentMonth }) => {
             <i class="fa-solid fa-calendar-days monthly" onClick={() => setShowModal(true)}/>
             {showModal && (
                 <Modal onClose={handleClose}>
-                    <div>
-                        <div>{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</div>
-                        <div>
-                            <button onClick={handlePrev}>Prev</button>
-                            <button onClick={handleToday}>Today</button>
-                            <button onClick={handleNext}>Next</button>
+                    <div id="month-container">
+                        <div id="month-header">{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</div>
+                        <div id="month-calendar-nav">
+                            <i className="fa fa-arrow-left-long" onClick={handlePrev}></i>
+                            <button className="today-button" onClick={handleToday}>Today</button>
+                            <i className="fa-solid fa-arrow-right-long" onClick={handleNext}></i>
                         </div>
-                        <div className="weekdays">
+                        <div id="month-weekdays-container">
                             <div>SUN</div>
                             <div>MON</div>
                             <div>TUE</div>
@@ -54,7 +54,7 @@ const Monthly = ({ month, setCurrentMonth }) => {
                             <div>FRI</div>
                             <div>SAT</div>
                         </div>
-                        <div className="month-container">
+                        <div id="month-days-container">
                             {month.map((row, i) => (
                                 <React.Fragment key={i}>
                                     {
