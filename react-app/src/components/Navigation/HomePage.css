@@ -1,29 +1,29 @@
-#home-container{
+#home-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-width:1000px;
+    min-width: 1000px;
 }
 
-#side-container{
-    border:red 1px solid;
-width:250px;
+#side-container {
+    border: red 1px solid;
+    width: 350px;
 }
 
-#main-container{
-    border:green 1px solid;
-    width:100%;
+#main-container {
+    border: green 1px solid;
+    width: 100%;
 }
 
-#main-inner{
+#main-inner {
     margin: auto;
-    border:teal 1px solid;
-    width:80%;
+    border: teal 1px solid;
+    width: 80%;
     max-width: 900px;
 }
 
-#misc-container{
-    border:blue 1px solid;
-    width:250px;
+#misc-container {
+    border: blue 1px solid;
+    width: 350px;
 
 }

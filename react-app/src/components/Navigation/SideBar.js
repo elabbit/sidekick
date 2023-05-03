@@ -1,16 +1,16 @@
-import LogoutButton from "../Auth/LogoutButton";
-import UserCard from "../User/UserCard";
 
-const SideBar = () =>{
-    return(
-        <>
-                <UserCard/>
-                <LogoutButton />
-        </>
+// import LogoutButton from "../Auth/LogoutButton";
+// import UserCard from "../User/UserCard";
+// import './SideBar.css'
+// const SideBar = () =>{
+//     return(
+//         <>
+//                 <UserCard/>
+//                 <LogoutButton />
+//         </>
 
-    )
+//     )
 
+// }
 
-}
-
-export default SideBar;
+// export default SideBar;

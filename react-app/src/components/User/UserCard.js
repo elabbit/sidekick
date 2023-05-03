@@ -7,13 +7,13 @@ function UserCard() {
     const user = useSelector(state => state.session.user)
 
     return (
-        <>
+        <div className='user-card'>
+            <div className='user-card-username' >{user.username}</div>
             <IconSelect  user={user}/>
-            <div>{user.username}</div>
+            <div>{user.score} Points</div>
             <UserEditForm/>
-            <div>score: {user.score}</div>
             <PokeGenerator user={user}/>
-        </>
+        </div>
 
     )
 }
