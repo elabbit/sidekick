@@ -3,7 +3,7 @@ import CalendarContext from "../../context/CalendarContext";
 import dayjs from "dayjs";
 
 const DayPicker = ({day, grey = false}) => {
-    const { currentDay, setCurrentDay, monthIndex, setMonthIndex, setTempMonthIndex } = useContext(CalendarContext)
+    const { currentDay, setCurrentDay, monthIndex, setTempMonthIndex } = useContext(CalendarContext)
 
     const getDayClass = (day) => {
         let classString = '';

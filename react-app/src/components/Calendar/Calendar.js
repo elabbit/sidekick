@@ -13,7 +13,7 @@ const Calendar = () => {
 
     useEffect(() => {
         setMonthIndex(currentDay.month())
-    }, [currentDay])
+    }, [currentDay, setMonthIndex])
 
     function handleToday() {
         setMonthIndex(dayjs().month());

@@ -15,7 +15,7 @@ const Monthly = ({ month, setCurrentMonth }) => {
 
     useEffect(() => {
         setTempMonthIndex(currentDay.month())
-    }, [currentDay])
+    }, [currentDay, setTempMonthIndex])
 
     function handleToday() {
         setMonthIndex(dayjs().month());
