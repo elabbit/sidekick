@@ -130,3 +130,9 @@ color:#43cec2;
     font-size:25px;
     font-weight: bold;
 }
+
+.day-grey{
+    color:lightgrey;
+    pointer-events:none;
+
+}

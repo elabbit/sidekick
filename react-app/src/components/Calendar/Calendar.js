@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CalendarContext from "../../context/CalendarContext";
 import { getMonth } from "../../util";
 import "./Calendar.css";
@@ -8,8 +8,12 @@ import Weekly from "./Weekly";
 
 
 const Calendar = () => {
-    const { monthIndex, setMonthIndex, currentDay, setCurrentDay, tempMonthIndex, setTempMonthIndex} = useContext(CalendarContext)
+    const { setMonthIndex, currentDay, setCurrentDay, setTempMonthIndex} = useContext(CalendarContext)
     const [currentMonth, setCurrentMonth] = useState(getMonth(currentDay.month()));
+
+    useEffect(() => {
+        setMonthIndex(currentDay.month())
+    }, [currentDay])
 
     function handleToday() {
         setMonthIndex(dayjs().month());
