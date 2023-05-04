@@ -18,6 +18,10 @@ const DayPicker = ({day, grey = false}) => {
             currMonthIndex = monthIndex%12;
         } else if(monthIndex<0){
             currMonthIndex = monthIndex+12;
+                while(currMonthIndex < 0){
+                    currMonthIndex = currMonthIndex+12;
+                }
+
         }
 
         if(grey && currMonthIndex !== day.month()){

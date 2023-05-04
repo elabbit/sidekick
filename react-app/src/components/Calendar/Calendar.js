@@ -8,11 +8,18 @@ import Weekly from "./Weekly";
 
 
 const Calendar = () => {
-    const { setMonthIndex, currentDay, setCurrentDay, setTempMonthIndex} = useContext(CalendarContext)
-    const [currentMonth, setCurrentMonth] = useState(getMonth(currentDay.month()));
+    const { monthIndex, setMonthIndex, currentDay, setCurrentDay,setTempMonthIndex} = useContext(CalendarContext)
+    const [currentMonth, setCurrentMonth] = useState(getMonth(monthIndex));
 
     useEffect(() => {
-        setMonthIndex(currentDay.month())
+        if(currentDay.year() === dayjs().year()){
+            setMonthIndex(currentDay.month())
+        }else if(currentDay.year() > dayjs().year()){
+            setMonthIndex(currentDay.month() + (12*(currentDay.year() - dayjs().year())))
+        } else if (currentDay.year() < dayjs().year()){
+            setMonthIndex(currentDay.month() - (12*(dayjs().year() - currentDay.year())))
+        }
+
     }, [currentDay, setMonthIndex])
 
     function handleToday() {

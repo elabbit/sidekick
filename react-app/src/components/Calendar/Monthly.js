@@ -32,7 +32,13 @@ const Monthly = ({ month, setCurrentMonth }) => {
     }
 
     function handleClose(){
-        setMonthIndex(tempMonthIndex)
+        if(currentDay.year() === dayjs().year()){
+            setMonthIndex(currentDay.month())
+        }else if(currentDay.year() > dayjs().year()){
+            setMonthIndex(currentDay.month() + (12*(currentDay.year() - dayjs().year())))
+        } else if (currentDay.year() < dayjs().year()){
+            setMonthIndex(currentDay.month() - (12*(dayjs().year() - currentDay.year())))
+        }
         setShowModal(false)
 
     }
