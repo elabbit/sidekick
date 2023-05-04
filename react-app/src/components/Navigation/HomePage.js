@@ -33,8 +33,6 @@ const HomePage = () => {
                 </div>
                 <div id="main-container">
                     <div id="main-inner">
-
-                    <h3>MAIN CONTENT</h3>
                     <Calendar />
                     {showHabit && (
                         <div>

@@ -6,9 +6,10 @@ import CalendarContext from "./CalendarContext";
 dayjs.extend(utc)
 
 const CalendarWrapper = (props) => {
-    const [monthIndex, setMonthIndex] = useState(dayjs().month());
-    const [tempMonthIndex, setTempMonthIndex] = useState(monthIndex);
     const [currentDay, setCurrentDay] = useState(dayjs())
+    const [monthIndex, setMonthIndex] = useState(currentDay.month());
+    const [tempMonthIndex, setTempMonthIndex] = useState(monthIndex);
+
 
     return (
         <CalendarContext.Provider value={{monthIndex, setMonthIndex, currentDay, setCurrentDay, tempMonthIndex, setTempMonthIndex}}>
