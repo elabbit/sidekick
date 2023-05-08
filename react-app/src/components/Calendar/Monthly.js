@@ -7,11 +7,15 @@ import DayPicker from "./DayPicker";
 
 const Monthly = ({ month, setCurrentMonth }) => {
     const [showModal, setShowModal] = useState(false);
-    const { monthIndex, setMonthIndex, setCurrentDay, tempMonthIndex, setTempMonthIndex } = useContext(CalendarContext)
+    const { currentDay, monthIndex, setMonthIndex, setCurrentDay, setTempMonthIndex } = useContext(CalendarContext)
 
     useEffect(() => {
         setCurrentMonth(getMonth(monthIndex))
-    }, [monthIndex, setCurrentMonth])
+    }, [monthIndex, setCurrentMonth, currentDay])
+
+    useEffect(() => {
+        setTempMonthIndex(currentDay.month())
+    }, [currentDay, setTempMonthIndex])
 
     function handleToday() {
         setMonthIndex(dayjs().month());
@@ -28,24 +32,30 @@ const Monthly = ({ month, setCurrentMonth }) => {
     }
 
     function handleClose(){
-        setMonthIndex(tempMonthIndex)
+        if(currentDay.year() === dayjs().year()){
+            setMonthIndex(currentDay.month())
+        }else if(currentDay.year() > dayjs().year()){
+            setMonthIndex(currentDay.month() + (12*(currentDay.year() - dayjs().year())))
+        } else if (currentDay.year() < dayjs().year()){
+            setMonthIndex(currentDay.month() - (12*(dayjs().year() - currentDay.year())))
+        }
         setShowModal(false)
 
     }
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Calendar</button>
+            <i className="fa-solid fa-calendar-days monthly" onClick={() => setShowModal(true)}/>
             {showModal && (
                 <Modal onClose={handleClose}>
-                    <div>
-                        <div>{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</div>
-                        <div>
-                            <button onClick={handlePrev}>Prev</button>
-                            <button onClick={handleToday}>Today</button>
-                            <button onClick={handleNext}>Next</button>
+                    <div id="month-container">
+                        <div id="month-header">{dayjs(new Date(dayjs().year(), monthIndex)).format("MMMM YYYY")}</div>
+                        <div id="month-calendar-nav">
+                            <i className="fa fa-arrow-left-long" onClick={handlePrev}></i>
+                            <button className="today-button" onClick={handleToday}>Today</button>
+                            <i className="fa-solid fa-arrow-right-long" onClick={handleNext}></i>
                         </div>
-                        <div className="weekdays">
+                        <div id="month-weekdays-container">
                             <div>SUN</div>
                             <div>MON</div>
                             <div>TUE</div>
@@ -54,12 +64,12 @@ const Monthly = ({ month, setCurrentMonth }) => {
                             <div>FRI</div>
                             <div>SAT</div>
                         </div>
-                        <div className="month-container">
+                        <div id="month-days-container">
                             {month.map((row, i) => (
                                 <React.Fragment key={i}>
                                     {
                                         row.map((day, index) => (
-                                            <DayPicker key={day.format("MMDD")} day={day} setShowModal={setShowModal}/>
+                                            <DayPicker key={day.format("MMDD")} day={day} setShowModal={setShowModal} grey={true}/>
                                         ))
                                     }
                                 </React.Fragment>

@@ -1,25 +1,138 @@
+#calendar-container{
+    padding:15px;
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+
+#calendar-header{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight:bold;
+}
 
 .weekdays{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 }
 
+.weekdays div{
+    display: flex;
+    justify-content: center;
+    width:35px;
+    height:25px;
+}
+
 .week-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+
 }
 
-.month-container {
+
+.week-container button{
+    font-weight:bold;
+    border:none;
+    cursor: pointer;
+    width:35px;
+    height:35px;
+    background-color: white;
+    border-radius: 50%;
+    font-size:20px;
+}
+
+#month-weekdays-container{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+}
+
+#month-days-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
 }
 
 .day-today{
-    border:solid red 1px;
+    color:#43cec2;
 }
 
 .day-current {
-    color:red;
+    outline:solid #43cec2 2px;
+
+}
+
+.monthly{
+    cursor: pointer;
+}
+
+.today-button{
+    color:#43cec2;
+    border-radius: 4px;
+    border:solid #43cec2 2px;
+    background-color: white;
+    cursor: pointer;
+    height:20px;
+}
+
+#calendar-header-right{
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+
+#month-container{
+padding:20px;
+font-size: 20px;
+border-radius: 8px;
+background-color: white;
+
+}
+
+#month-days-container button{
+    margin:auto;
+    font-weight:bold;
+    border:none;
+    cursor: pointer;
+    width:35px;
+    height:30px;
+    background-color: white;
+    border-radius: 50%;
+    font-size:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1px;
+    margin-bottom:1px;
+    }
+
+#month-weekdays-container div{
+display: flex;
+justify-content: center;
+padding:3px;
+}
+
+#month-calendar-nav{
+display: flex;
+margin:5px;
+gap:8px;
+align-items: center;
+}
+
+#month-calendar-nav i{
+cursor: pointer;
+color:#43cec2;
+}
+
+#month-header{
+    font-size:25px;
+    font-weight: bold;
+}
+
+.day-grey{
+    color:lightgrey;
+    pointer-events:none;
+
 }

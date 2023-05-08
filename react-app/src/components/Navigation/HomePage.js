@@ -37,20 +37,21 @@ const HomePage = () => {
 
                 <div id="main-container">
                     <div id="main-inner">
-                        <h3>MAIN CONTENT</h3>
-                        <Calendar />
-                        {showHabit && (
-                            <div>
-                                <AddHabit />
-                                <AllHabits />
-                            </div>
-                        )
-                        }
-                        {showToDo && (
-                            <div>
-                                <AllToDoLists />
-                            </div>
-                        )}
+
+                    <Calendar />
+                    {showHabit && (
+                        <div>
+                            <AddHabit />
+                            <AllHabits />
+                        </div>
+                    )
+                    }
+                    {showToDo && (
+                        <div>
+                            <AllToDoLists />
+                        </div>
+                    )}
+
                     </div>
                 </div>
                 <div id="misc-container">
