@@ -7,13 +7,15 @@ function UserCard() {
     const user = useSelector(state => state.session.user)
 
     return (
-        <>
-            <IconSelect  user={user}/>
-            <div>{user.username}</div>
-            <UserEditForm/>
-            <div>score: {user.score}</div>
-            <PokeGenerator user={user}/>
-        </>
+        <div className='user-card'>
+            <div id='username-useredit'>
+                <div id='user-card-username' >{user.username}</div>
+                <UserEditForm />
+            </div>
+            <IconSelect user={user} />
+            <div>{user.score} Points</div>
+            <PokeGenerator user={user} />
+        </div>
 
     )
 }

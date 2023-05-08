@@ -71,9 +71,9 @@ const PokeGenerator = ({ user }) => {
     }
 
     return (
-        <div>
-            <button onClick={() => generatePokemon()}>Get a Pokemon</button>
-            <button onClick={() => evolvePoke()}>Evolve a Pokemon</button>
+        <div className="get-pokemon options" >
+            <button className="get-pokemon" onClick={() => generatePokemon()}>Catch </button>
+            <button className="get-pokemon" onClick={() => evolvePoke()}>Evolve </button>
         </div>
     )
 }

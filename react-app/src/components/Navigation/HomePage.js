@@ -1,8 +1,11 @@
-import SideBar from "./SideBar";
 import './HomePage.css'
+import './SideBar.css'
+
 import AllHabits from "../Habit/AllHabits";
 import AddHabit from "../Habit/AddHabitModal";
 import Calendar from "../Calendar/Calendar";
+import UserCard from "../User/UserCard";
+import LogoutButton from '../Auth/LogoutButton';
 import { useState } from "react";
 import AllToDoLists from "../ToDo/AllToDoLists";
 
@@ -24,15 +27,17 @@ const HomePage = () => {
         <>
             <div id="home-container">
                 <div id="side-container">
-                    <h3>SIDEBAR</h3>
-                    <SideBar />
-                    <div>
-                        <button type="button" onClick={() => { displayHabit() }}>Go to Habit</button>
-                        <button type="button" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                    <UserCard />
+                    <div id="side-container-bottom">
+                        <button type="button" className='side' id="side-habit" onClick={() => { displayHabit() }}>Go to Habit</button>
+                        <button type="button" className='side' id="side-todo" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                        <LogoutButton />
                     </div>
                 </div>
+
                 <div id="main-container">
                     <div id="main-inner">
+
                     <Calendar />
                     {showHabit && (
                         <div>
@@ -46,6 +51,7 @@ const HomePage = () => {
                             <AllToDoLists />
                         </div>
                     )}
+
                     </div>
                 </div>
                 <div id="misc-container">

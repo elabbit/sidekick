@@ -4,15 +4,15 @@ import ICONS from "../../icons/index.js"
 import { Modal } from '../../context/Modal.js'
 import { updateIcon } from '../../store/session.js'
 
-function IconSelect({user}) {
+function IconSelect({ user }) {
     const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
 
-    const update = async (ico) =>{
-            const data = await dispatch(updateIcon(ico));
-            if (data === "success") {
-                setShowModal(false)
-            }
+    const update = async (ico) => {
+        const data = await dispatch(updateIcon(ico));
+        if (data === "success") {
+            setShowModal(false)
+        }
     }
 
 
@@ -20,18 +20,18 @@ function IconSelect({user}) {
     return (
         <div>
             <div>{user.name}</div>
-            <button onClick={() => setShowModal(true)}>
-            <img src={ICONS[user.default_icon]} alt=''/>
+            <button className='user-icon' onClick={() => setShowModal(true)}>
+                <img className='user-icon' src={ICONS[user.default_icon]} alt='' />
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                {user.user_icons.map((ico)=>(
-                    <button key={ico} onClick={()=>update(ico)}>
-                    <img src={ICONS[ico]} alt=''/>
-                    </button>
-                ))
+                    {user.user_icons.map((ico) => (
+                        <button key={ico} onClick={() => update(ico)}>
+                            <img src={ICONS[ico]} alt='' />
+                        </button>
+                    ))
 
-                }
+                    }
                 </Modal>
             )}
         </div>
