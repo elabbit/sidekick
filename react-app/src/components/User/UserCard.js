@@ -8,11 +8,13 @@ function UserCard() {
 
     return (
         <div className='user-card'>
-            <div className='user-card-username' >{user.username}</div>
-            <IconSelect  user={user}/>
+            <div id='username-useredit'>
+                <div id='user-card-username' >{user.username}</div>
+                <UserEditForm />
+            </div>
+            <IconSelect user={user} />
             <div>{user.score} Points</div>
-            <UserEditForm/>
-            <PokeGenerator user={user}/>
+            <PokeGenerator user={user} />
         </div>
 
     )

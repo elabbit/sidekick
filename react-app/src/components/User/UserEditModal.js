@@ -43,7 +43,9 @@ const UserEditForm = () => {
 
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>Edit User</button>
+            <button onClick={() => setShowModal(true)}>
+            <i class="fa-solid fa-gear"></i>
+            </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     {errors && (

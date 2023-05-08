@@ -27,30 +27,30 @@ const HomePage = () => {
         <>
             <div id="home-container">
                 <div id="side-container">
-                <UserCard/>
-                    <div>
-                        <button type="button" onClick={() => { displayHabit() }}>Go to Habit</button>
-                        <button type="button" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                    <UserCard />
+                    <div id="side-container-bottom">
+                        <button type="button" className='side' id="side-habit" onClick={() => { displayHabit() }}>Go to Habit</button>
+                        <button type="button" className='side' id="side-todo" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                        <LogoutButton />
                     </div>
-                    <LogoutButton />
                 </div>
 
                 <div id="main-container">
                     <div id="main-inner">
-                    <h3>MAIN CONTENT</h3>
-                    <Calendar />
-                    {showHabit && (
-                        <div>
-                            <AddHabit />
-                            <AllHabits />
-                        </div>
-                    )
-                    }
-                    {showToDo && (
-                        <div>
-                            <AllToDoLists />
-                        </div>
-                    )}
+                        <h3>MAIN CONTENT</h3>
+                        <Calendar />
+                        {showHabit && (
+                            <div>
+                                <AddHabit />
+                                <AllHabits />
+                            </div>
+                        )
+                        }
+                        {showToDo && (
+                            <div>
+                                <AllToDoLists />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div id="misc-container">
