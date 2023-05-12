@@ -1,0 +1,68 @@
+/* user card container */
+.user-card {
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: fit-content;
+    max-height: 50%;
+}
+
+button.user-icon {
+    border: none;
+    background-color: white;
+}
+
+img.user-icon {
+    height: 130px;
+    width: 130px;
+}
+
+.user-icon:hover {
+    cursor: pointer;
+}
+
+#user-card-username {
+    font-size: 50px;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+    color: #43cec2;
+}
+
+#points-store{
+    display: flex;
+}
+
+/* store */
+#shop-container{
+    background-color: white;
+    height:270px;
+    width:300px;
+    border-radius: 8px;
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#shop-header{
+    width:100%;
+    display: flex;
+    font-size:20px;
+    font-weight: bold;
+    justify-content: space-between;
+    padding:5px;
+    border-bottom: #43cec2 3px solid;
+}
+
+#shop-done{
+    background-color: transparent;
+    width:150px;
+    padding:5px;
+    border:#43cec2 solid 2px;
+    border-radius: 4px;
+    color:#43cec2;
+}

@@ -1,5 +1,4 @@
 import './HomePage.css'
-import './SideBar.css'
 
 import AllHabits from "../Habit/AllHabits";
 import AddHabit from "../Habit/AddHabitModal";
