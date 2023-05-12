@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux'
-import PokeGenerator from '../Pokemon/PokeGenerator.js';
 import IconSelect from './IconSelectModal.js';
 import UserEditForm from './UserEditModal.js';
+import ShopModal from './ShopModal.js';
+import './UserCard.css'
 
 function UserCard() {
     const user = useSelector(state => state.session.user)
@@ -13,8 +14,11 @@ function UserCard() {
                 <UserEditForm />
             </div>
             <IconSelect user={user} />
-            <div>{user.score} Points</div>
-            <PokeGenerator user={user} />
+            <div id='points-store'>
+                <div>{user.score} Points</div>
+                <ShopModal user={user} />
+            </div>
+
         </div>
 
     )

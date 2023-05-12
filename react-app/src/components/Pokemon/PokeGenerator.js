@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux"
-import ICONS from "../../icons"
+import "./Pokemon.css"
 import { updatePokemon, updateScore } from "../../store/session"
+import { ReactComponent as Pokeball } from "../../images/pokeball.svg"
+import { ReactComponent as Evolve } from "../../images/evolve.svg"
 
 const PokeGenerator = ({ user }) => {
     const noEvolvePoke = [83, 95, 106, 107, 108, 113, 114, 115, 122, 123, 124, 125, 126, 127, 128, 131, 132, 137, 142, 143, 144, 145, 146, 150, 151]
@@ -57,6 +59,8 @@ const PokeGenerator = ({ user }) => {
     //     return basePokeWSec[idxOfBase + 1]
     // }
 
+
+
     const evolvePoke = async () => {
         if (score - 1 >= 0) {
             if (res.length > 0) {
@@ -71,9 +75,18 @@ const PokeGenerator = ({ user }) => {
     }
 
     return (
-        <div className="get-pokemon options" >
-            <button className="get-pokemon" onClick={() => generatePokemon()}>Catch </button>
-            <button className="get-pokemon" onClick={() => evolvePoke()}>Evolve </button>
+        <div id="pokemon-buttons" >
+            <button id="catch-pokemon" onClick={() => generatePokemon()}>
+                    <div>Catch a new Pokemon!</div>
+                    <Pokeball/>
+                    <div className="price">10 Points</div>
+            </button>
+            <button id="evolve-pokemon" onClick={() => evolvePoke()}>
+                    <div>Evolve an existing Pokemon!</div>
+                    <Evolve/>
+                    <div className="price">15 Points</div>
+
+            </button>
         </div>
     )
 }
