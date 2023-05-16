@@ -10,7 +10,7 @@ const SplashPage = () => {
     return (
         <>
             <div id="splash-container">
-                <div>
+                <div id="splash-form-container">
                     {showLogin ?
                         <LoginForm showSignUp={() => setShowLogin(false)} />
                         :
