@@ -25,31 +25,32 @@ const HomePage = () => {
     return (
         <>
             <div id="home-container">
-                <div id="side-container">
-                    <UserCard />
-                    <div id="side-container-bottom">
-                        <button type="button" className='side' id="side-habit" onClick={() => { displayHabit() }}>Go to Habit</button>
-                        <button type="button" className='side' id="side-todo" onClick={() => { displayToDo() }}>Got to Todo lists</button>
-                        <LogoutButton />
+                <div id="side-outer-container">
+                    <div id="side-inner-container">
+                        <UserCard />
+                        <div id="side-container-bottom">
+                            <button type="button" className='side' id="side-habit" onClick={() => { displayHabit() }}>Go to Habit</button>
+                            <button type="button" className='side' id="side-todo" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                            <LogoutButton />
+                        </div>
                     </div>
                 </div>
-
                 <div id="main-container">
                     <div id="main-inner">
 
-                    <Calendar />
-                    {showHabit && (
-                        <div>
-                            <AddHabit />
-                            <AllHabits />
-                        </div>
-                    )
-                    }
-                    {showToDo && (
-                        <div>
-                            <AllToDoLists />
-                        </div>
-                    )}
+                        <Calendar />
+                        {showHabit && (
+                            <div>
+                                <AddHabit />
+                                <AllHabits />
+                            </div>
+                        )
+                        }
+                        {showToDo && (
+                            <div>
+                                <AllToDoLists />
+                            </div>
+                        )}
 
                     </div>
                 </div>

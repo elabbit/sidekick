@@ -5,8 +5,8 @@ body {
     color: #262626;
     box-sizing: border-box;
     background-color: #FFF;
-    /* background-image: url('images/sky.jpg'); */
     background-size: 110%;
+    margin: 0%;
 }
 
 body button{
