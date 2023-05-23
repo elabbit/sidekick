@@ -29,8 +29,8 @@ const HomePage = () => {
                     <div id="side-inner-container">
                         <UserCard />
                         <div id="side-container-bottom">
-                            <button type="button" className='side' id="side-habit" onClick={() => { displayHabit() }}>Go to Habit</button>
-                            <button type="button" className='side' id="side-todo" onClick={() => { displayToDo() }}>Got to Todo lists</button>
+                            <button type="button" className={showHabit? 'side-highlight':'side'} id="side-habit" onClick={() => { displayHabit() }}>Habit Tracking</button>
+                            <button type="button" className={showToDo?'side-highlight':'side'} id="side-todo" onClick={() => { displayToDo() }}>Todo lists</button>
                             <LogoutButton />
                         </div>
                     </div>

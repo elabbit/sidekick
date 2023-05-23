@@ -9,14 +9,17 @@ function UserCard() {
 
     return (
         <div className='user-card'>
-            <div id='username-useredit'>
+            <div id='user-card-header'>
+                <div>Welcome to your dashboard</div>
                 <div id='user-card-username' >{user.username}</div>
-                <UserEditForm />
             </div>
             <IconSelect user={user} />
-            <div id='points-store'>
-                <div>{user.score} Points</div>
-                <ShopModal user={user} />
+            <div id='points-and-buttons'>
+                <div id='user-score'>{user.score} Points</div>
+                <div id="user-card-buttons">
+                    <UserEditForm />
+                    <ShopModal user={user} />
+                </div>
             </div>
 
         </div>

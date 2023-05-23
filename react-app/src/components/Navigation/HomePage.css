@@ -10,29 +10,19 @@
     height: 100vh;
 }
 #side-inner-container {
-    /* border: red 1px solid; */
     width: 250px;
     height: 100vh;
-    /* background-image: linear-gradient(to bottom, white, #43cec259) */
-
-    background-image: url("../../images/gradient-background.jpg");
+    background-image: url("../../images/pastel-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50% 0;
-
-    /* background-color: lightgray; */
-    /* border-right: 1px solid lightgray;
-    background-color: #43cec259; */
 }
 
 #main-container {
-    /* border: green 1px solid; */
     width: 100%;
 }
 
 #main-inner {
     margin: auto;
-    /* border: teal 1px solid; */
     box-sizing: border-box;
     padding: 2rem;
     width: 100%;
@@ -56,7 +46,6 @@
     align-items: center;
     width: 100%;
     height: 64%;
-    /* background-color: #43cec259; */
 }
 
 button.side {
@@ -67,12 +56,31 @@ button.side {
     border: none;
     color: white;
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
+    background-color: #43cec2;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 
-    border: 2px solid white;
-    background-color: transparent;
+button.side:hover {
+    background-color: #77ded6;
+}
 
-    /* background-color: #43cec2; */
+button.side-highlight {
+    width: fit-content;
+    margin-bottom: 2rem;
+    height: 40px;
+    width: 80%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #43cec2;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    outline: #ffffff 3px solid;
+}
+
+button.side-highlight:hover {
+cursor: default;
 }
 
 #username-useredit {

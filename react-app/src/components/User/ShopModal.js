@@ -8,7 +8,7 @@ function ShopModal({ user }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <button className="user-card-buttons" onClick={() => setShowModal(true)}>
                 <i class="fa-solid fa-store"></i>
             </button>
             {showModal && (
