@@ -73,6 +73,10 @@ button.user-card-buttons {
     margin: 10px;
 }
 
+button.user-card-buttons:hover {
+    color: #77ded6;
+}
+
 
 /* store */
 #shop-container {
