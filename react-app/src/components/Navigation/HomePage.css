@@ -5,25 +5,31 @@
     min-width: 1000px;
 }
 
-#side-container {
-    /* border: red 1px solid; */
+#side-outer-container {
     width: 350px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    height: 100vh;
+}
+#side-inner-container {
+    width: 250px;
+    height: 100vh;
+    background-image: url("../../images/pastel-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #main-container {
-    /* border: green 1px solid; */
     width: 100%;
 }
 
 #main-inner {
     margin: auto;
-    border: teal 1px solid;
-    width: 80%;
-    max-width: 900px;
+    box-sizing: border-box;
+    padding: 2rem;
+    width: 100%;
+    /* max-width: 900px; */
     min-width: 530px;
+    height: 100vh;
+    background-color: white;
 }
 
 #misc-container {
@@ -34,25 +40,47 @@
 
 #side-container-bottom {
     display: flex;
+    padding-top: 40px;
     box-sizing: border-box;
-    /* padding: 2rem 0rem; */
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
-    height: 50%;
-    background: #43cec259;
-    border-radius: 10px;
+    height: 64%;
 }
 
 button.side {
     width: fit-content;
-    background-color: #43cec2;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     height: 40px;
     width: 80%;
     border: none;
     color: white;
-    border-radius: 15px 0px 0px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #43cec2;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+button.side:hover {
+    background-color: #77ded6;
+}
+
+button.side-highlight {
+    width: fit-content;
+    margin-bottom: 2rem;
+    height: 40px;
+    width: 80%;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: #43cec2;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    outline: #ffffff 3px solid;
+}
+
+button.side-highlight:hover {
+cursor: default;
 }
 
 #username-useredit {

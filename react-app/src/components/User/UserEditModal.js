@@ -43,7 +43,7 @@ const UserEditForm = () => {
 
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>
+            <button className="user-card-buttons" onClick={() => setShowModal(true)}>
             <i class="fa-solid fa-gear"></i>
             </button>
             {showModal && (
